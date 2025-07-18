@@ -1,4 +1,4 @@
-# Bangladesh Laws Database
+# Bangladesh Legal Acts Dataset
 
 A comprehensive database of Bangladesh's legal framework, containing 1484+ acts scraped and processed from the official Bangladesh Laws portal.
 
