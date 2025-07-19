@@ -1,6 +1,6 @@
 # Bangladesh Legal Acts Dataset
 
-A comprehensive database of Bangladesh's legal framework, containing 1484+ acts scraped and processed from the official Bangladesh Laws portal.
+A comprehensive database of Bangladesh's legal framework, containing 1484+ acts scraped and processed from the official Bangladesh Laws portal, enhanced with historical government context.
 
 ## 📊 Dataset Overview
 
@@ -9,6 +9,7 @@ A comprehensive database of Bangladesh's legal framework, containing 1484+ acts 
 - **Total Footnotes**: 14,523
 - **Languages**: English, Bengali, Mixed
 - **Format**: JSON with structured metadata
+- **Historical Context**: Government periods from 1799-2025
 - **License**: CC-BY 4.0
 
 [![View Dataset on Kaggle](https://img.shields.io/badge/Kaggle-View_Dataset-blue?logo=kaggle)](https://www.kaggle.com/dsv/12511542)
@@ -33,17 +34,20 @@ If you use this dataset in your research or project, please cite it as:
 
 ```
 ├── Data/
-│   ├── law.json              # Combined dataset (Git LFS)
-│   ├── processed_law.json    # Enhanced dataset with tokens & language detection (Git LFS)
-│   └── meta.json             # Dataset metadata
-├── acts/                     # Individual act JSON files (Git LFS)
-├── actScraper.py             # Main scraping script
-├── actFetch.py               # Detailed content fetcher
-├── cleaner.py                # CSV data processing
-├── combine.py                # JSON combination script
-├── reducer.py                # Data enhancement script
-├── filtered_act_list.csv     # Processed act list (Git LFS)
-└── README.md                 # This file
+│   ├── law.json                                    # Combined dataset (Git LFS)
+│   ├── processed_law.json                          # Enhanced dataset with tokens & language detection (Git LFS)
+│   ├── processed_law_with_govt_context.json        # Final dataset with government context (Git LFS)
+│   ├── govt.json                                   # Government historical data
+│   └── meta.json                                   # Dataset metadata
+├── acts/                                           # Individual act JSON files (Git LFS)
+├── actScraper.py                                   # Main scraping script
+├── actFetch.py                                     # Detailed content fetcher
+├── cleaner.py                                      # CSV data processing
+├── combine.py                                      # JSON combination script
+├── reducer.py                                      # Data enhancement script
+├── fusingGovtContext.py                            # Government context fusion script
+├── filtered_act_list.csv                           # Processed act list (Git LFS)
+└── README.md                                       # This file
 ```
 
 ## 🚀 Quick Start
@@ -79,6 +83,11 @@ python combine.py
 5. **Enhance with tokens and language detection**:
 ```bash
 python reducer.py
+```
+
+6. **Add historical government context**:
+```bash
+python fusingGovtContext.py
 ```
 
 ## 📋 Data Schema
@@ -133,6 +142,15 @@ python reducer.py
     "act_title_from_csv": "The Penal Code, 1860",
     "is_repealed": false
   },
+  "government_context": {
+    "govt_system": "Company Rule",
+    "position_head_govt": "Governor-General of India",
+    "head_govt_name": "Lord Canning (Charles Canning)",
+    "head_govt_designation": "Governor-General of India",
+    "how_got_power": "Company appointment",
+    "period_years": "1856-1862",
+    "years_in_power": 6
+  },
   "source_url": "http://bdlaws.minlaw.gov.bd/act-print-11.html",
   "fetch_timestamp": "2025-07-19 02:45:32"
 }
@@ -144,6 +162,7 @@ python reducer.py
 - **Missing Data Recovery**: Automatically fills gaps using CSV metadata
 - **Token Counting**: Word-level tokenization for all text content
 - **Language Detection**: Automatic detection of English/Bengali/Mixed content
+- **Historical Government Context**: Matches each act with the government system and leadership at the time of enactment
 - **Metadata Preservation**: Maintains source URLs and timestamps
 
 ### Quality Assurance
@@ -151,6 +170,13 @@ python reducer.py
 - **Data Validation**: Automatic validation of combined datasets
 - **Progress Tracking**: Real-time processing progress
 - **Statistics**: Comprehensive processing statistics
+
+### Government Context Features
+- **Historical Periods**: Covers government systems from 1799-2025
+- **Leadership Information**: Includes head of government names and designations
+- **Power Transitions**: Documents how each government came to power
+- **System Classification**: Categorizes different government types (Company Rule, Colonial, Democratic, Military, etc.)
+- **Temporal Mapping**: Precise year-based matching of acts to government periods
 
 ## 📈 Dataset Statistics
 
@@ -161,7 +187,9 @@ python reducer.py
 | Languages | English, Bengali, Mixed |
 | Total Sections | 35,633 |
 | Total Footnotes | 14,523 |
-| Average Tokens per Act | ~1,685 |
+| Government Periods Covered | 50+ historical periods |
+| Government Systems | Company Rule, Colonial, Military, Democratic, etc. |
+| Average Tokens per Act | ~2,884 |
 | Processing Time | ~19 minutes |
 
 ## 🛠️ Technical Details
@@ -177,7 +205,30 @@ python reducer.py
 - **Memory efficiency**: Streaming JSON writing for large files
 - **Unicode support**: Full Bengali/English text support
 - **Incremental processing**: Skip already processed files
+- **Chunked processing**: Optimized memory usage for large datasets
+- **Government context fusion**: Efficient lookup-based government matching
 
+## 🏛️ Historical Government Context
+
+The dataset includes comprehensive historical government context for each legal act, covering:
+
+### Government Systems Covered
+- **Company Rule (1799-1858)**: East India Company administration
+- **British Colonial Rule (1858-1947)**: Direct British Crown rule
+- **Pakistan Period (1947-1971)**: Dominion and Republic of Pakistan
+- **Bangladesh Independence (1971-present)**: Various democratic and military governments
+
+### Context Information
+- Government system type and duration
+- Head of government name and official designation
+- Method of acquiring power (election, appointment, coup, etc.)
+- Exact period years for historical accuracy
+
+This historical context enables researchers to:
+- Analyze legal evolution across different political systems
+- Study the impact of government changes on legislation
+- Understand the political circumstances surrounding specific laws
+- Conduct temporal analysis of legal frameworks
 
 ## 🤝 Contributing
 
