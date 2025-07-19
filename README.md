@@ -1,4 +1,4 @@
-# Bangladesh Laws Database
+# Bangladesh Legal Acts Dataset
 
 A comprehensive database of Bangladesh's legal framework, containing 1484+ acts scraped and processed from the official Bangladesh Laws portal.
 
@@ -10,6 +10,24 @@ A comprehensive database of Bangladesh's legal framework, containing 1484+ acts 
 - **Languages**: English, Bengali, Mixed
 - **Format**: JSON with structured metadata
 - **License**: CC-BY 4.0
+
+[![View Dataset on Kaggle](https://img.shields.io/badge/Kaggle-View_Dataset-blue?logo=kaggle)](https://www.kaggle.com/dsv/12511542)
+
+## 📚 Citation
+
+If you use this dataset in your research or project, please cite it as:
+
+```bibtex
+@misc{adib_sakhawat_2025,
+  title     = {Bangladesh Legal Acts Dataset},
+  url       = {https://www.kaggle.com/dsv/12511542},
+  DOI       = {10.34740/KAGGLE/DSV/12511542},
+  publisher = {Kaggle},
+  author    = {Adib Sakhawat},
+  year      = {2025}
+}
+```
+
 
 ## 🗂️ Repository Structure
 
@@ -160,20 +178,6 @@ python reducer.py
 - **Unicode support**: Full Bengali/English text support
 - **Incremental processing**: Skip already processed files
 
-## 📚 Citation
-
-If you use this dataset in your research, please cite:
-
-```bibtex
-@dataset{bangladesh_laws_2025,
-  title={Bangladesh Laws Database},
-  author={[Your Name]},
-  year={2025},
-  publisher={GitHub},
-  url={https://github.com/[username]/bangladesh-laws},
-  license={CC-BY-4.0}
-}
-```
 
 ## 🤝 Contributing
 
