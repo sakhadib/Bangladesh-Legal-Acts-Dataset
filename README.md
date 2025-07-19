@@ -178,20 +178,6 @@ python reducer.py
 - **Unicode support**: Full Bengali/English text support
 - **Incremental processing**: Skip already processed files
 
-## 📚 Citation
-
-If you use this dataset in your research, please cite:
-
-```bibtex
-@dataset{bangladesh_laws_2025,
-  title={Bangladesh Laws Database},
-  author={[Your Name]},
-  year={2025},
-  publisher={GitHub},
-  url={https://github.com/[username]/bangladesh-laws},
-  license={CC-BY-4.0}
-}
-```
 
 ## 🤝 Contributing
 
