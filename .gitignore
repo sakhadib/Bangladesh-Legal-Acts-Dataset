@@ -175,7 +175,6 @@ tmp/
 
 # Raw scraped data
 acts_data.csv
-filtered_act_list.csv
 
 # VS Code settings (optional - you may want to keep these)
 .vscode/
