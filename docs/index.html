@@ -6,7 +6,13 @@
     <title>Bangladesh Legal Acts Dataset - 1,484+ Legislative Acts from 1799-2025 | BLAD</title>
     
     <!-- SEO Meta Tags -->
-    <meta name="description" content="Download the comprehensive Bangladesh Legal Acts Dataset (BLAD) containing 1,484+ meticulously curated legislative acts from 1799-2025. Explore Bangladeshi legal history, government periods, and constitutional evolution.">
+    <meta name="description" content="Download the comprehensive Bangladesh Legal Acts Dataset (BLAD) containing 1,484+ meticulously curated legislative acts from 1799-2025. Explore Bangladeshi legal history, government periods, and constit                        <div id="panel-harvard" class="citation-panel">
+                            <div class="relative">
+                                <button class="copy-citation-btn hidden md:block absolute top-2 right-2 bg-gray-700 hover:bg-gray-600 text-gray-300 px-3 py-1 rounded-md text-sm transition-colors"><i class="fas fa-copy mr-1"></i><span>Copy</span></button>
+                                <p class="citation-text text-gray-300 font-mono bg-gray-800/50 p-4 rounded-lg pr-0 md:pr-20 text-sm leading-relaxed">Sakhawat, A. (2025) "Bangladesh Legal Acts Dataset," Zenodo. Available at: https://doi.org/10.5281/zenodo.16176827.</p>
+                                <button class="copy-citation-btn md:hidden mt-2 w-full bg-gray-700 hover:bg-gray-600 text-gray-300 px-3 py-2 rounded-md text-sm transition-colors"><i class="fas fa-copy mr-1"></i><span>Copy</span></button>
+                            </div>
+                        </div>l evolution.">
     <meta name="keywords" content="Bangladesh legal acts, legal dataset, legislative history, Bangladesh laws, legal research, constitutional law, government legislation, legal database, open data, research dataset">
     <meta name="author" content="Adib Sakhawat">
     <meta name="robots" content="index, follow">
@@ -195,6 +201,73 @@
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(10px); }
             to { opacity: 1; transform: translateY(0); }
+        }
+        
+        /* Mobile responsive citation fixes */
+        .citation-text {
+            word-wrap: break-word;
+            word-break: break-word;
+            overflow-wrap: break-word;
+            hyphens: auto;
+            white-space: pre-wrap;
+            max-width: 100%;
+        }
+        
+        /* Handle long URLs specifically */
+        .citation-text i {
+            font-style: italic;
+            word-break: normal;
+        }
+        
+        @media (max-width: 768px) {
+            .citation-tab {
+                padding: 0.5rem 1rem;
+                font-size: 0.875rem;
+                flex: 1;
+                text-align: center;
+                min-width: 0;
+            }
+            
+            .citation-text {
+                font-size: 0.75rem !important;
+                line-height: 1.4 !important;
+                padding: 0.75rem !important;
+                white-space: pre-wrap;
+                word-break: break-all;
+                overflow-wrap: anywhere;
+            }
+            
+            .citation-text pre, .citation-text code {
+                font-size: 0.75rem !important;
+                line-height: 1.4 !important;
+                white-space: pre-wrap;
+                word-break: break-all;
+                overflow-wrap: anywhere;
+            }
+            
+            .copy-citation-btn {
+                position: relative !important;
+                top: auto !important;
+                right: auto !important;
+                margin-top: 0.5rem;
+                width: 100%;
+                text-align: center;
+            }
+            
+            .citation-panel .relative {
+                padding-right: 0 !important;
+            }
+            
+            /* Make tabs scrollable on very small screens */
+            #citation-tabs {
+                -webkit-overflow-scrolling: touch;
+                scrollbar-width: none;
+                -ms-overflow-style: none;
+            }
+            
+            #citation-tabs::-webkit-scrollbar {
+                display: none;
+            }
         }
     </style>
 </head>
@@ -482,24 +555,26 @@
                 </p>
                 <div class="glass-effect rounded-xl p-6 max-w-4xl mx-auto">
                     <div class="border-b border-gray-700 mb-4">
-                        <nav id="citation-tabs" class="flex -mb-px" aria-label="Tabs">
-                            <button class="citation-tab active" data-target="panel-apa">APA</button>
-                            <button class="citation-tab" data-target="panel-mla">MLA</button>
-                            <button class="citation-tab" data-target="panel-harvard">Harvard</button>
-                            <button class="citation-tab" data-target="panel-bibtex">BibTeX</button>
+                        <nav id="citation-tabs" class="flex flex-wrap -mb-px overflow-x-auto" aria-label="Tabs">
+                            <button class="citation-tab active flex-shrink-0" data-target="panel-apa">APA</button>
+                            <button class="citation-tab flex-shrink-0" data-target="panel-mla">MLA</button>
+                            <button class="citation-tab flex-shrink-0" data-target="panel-harvard">Harvard</button>
+                            <button class="citation-tab flex-shrink-0" data-target="panel-bibtex">BibTeX</button>
                         </nav>
                     </div>
                     <div>
                         <div id="panel-apa" class="citation-panel active">
                             <div class="relative">
-                                <button class="copy-citation-btn absolute top-2 right-2 bg-gray-700 hover:bg-gray-600 text-gray-300 px-3 py-1 rounded-md text-sm transition-colors"><i class="fas fa-copy mr-1"></i><span>Copy</span></button>
-                                <p class="citation-text text-gray-300 font-mono bg-gray-800/50 p-4 rounded-lg pr-20">Sakhawat, A. (2025). <i>Bangladesh Legal Acts Dataset</i>. Zenodo. https://doi.org/10.5281/zenodo.16176827</p>
+                                <button class="copy-citation-btn hidden md:block absolute top-2 right-2 bg-gray-700 hover:bg-gray-600 text-gray-300 px-3 py-1 rounded-md text-sm transition-colors"><i class="fas fa-copy mr-1"></i><span>Copy</span></button>
+                                <p class="citation-text text-gray-300 font-mono bg-gray-800/50 p-4 rounded-lg pr-0 md:pr-20 text-sm leading-relaxed">Sakhawat, A. (2025). <i>Bangladesh Legal Acts Dataset</i>. Zenodo. https://doi.org/10.5281/zenodo.16176827</p>
+                                <button class="copy-citation-btn md:hidden mt-2 w-full bg-gray-700 hover:bg-gray-600 text-gray-300 px-3 py-2 rounded-md text-sm transition-colors"><i class="fas fa-copy mr-1"></i><span>Copy</span></button>
                             </div>
                         </div>
                         <div id="panel-mla" class="citation-panel">
                             <div class="relative">
-                                <button class="copy-citation-btn absolute top-2 right-2 bg-gray-700 hover:bg-gray-600 text-gray-300 px-3 py-1 rounded-md text-sm transition-colors"><i class="fas fa-copy mr-1"></i><span>Copy</span></button>
-                                <p class="citation-text text-gray-300 font-mono bg-gray-800/50 p-4 rounded-lg pr-20">Sakhawat, Adib. <i>Bangladesh Legal Acts Dataset</i>. Zenodo, 2025, doi:10.5281/zenodo.16176827.</p>
+                                <button class="copy-citation-btn hidden md:block absolute top-2 right-2 bg-gray-700 hover:bg-gray-600 text-gray-300 px-3 py-1 rounded-md text-sm transition-colors"><i class="fas fa-copy mr-1"></i><span>Copy</span></button>
+                                <p class="citation-text text-gray-300 font-mono bg-gray-800/50 p-4 rounded-lg pr-0 md:pr-20 text-sm leading-relaxed">Sakhawat, Adib. <i>Bangladesh Legal Acts Dataset</i>. Zenodo, 2025, doi:10.5281/zenodo.16176827.</p>
+                                <button class="copy-citation-btn md:hidden mt-2 w-full bg-gray-700 hover:bg-gray-600 text-gray-300 px-3 py-2 rounded-md text-sm transition-colors"><i class="fas fa-copy mr-1"></i><span>Copy</span></button>
                             </div>
                         </div>
                         <div id="panel-harvard" class="citation-panel">
@@ -510,8 +585,8 @@
                         </div>
                         <div id="panel-bibtex" class="citation-panel">
                             <div class="relative">
-                                <button class="copy-citation-btn absolute top-2 right-2 bg-gray-700 hover:bg-gray-600 text-gray-300 px-3 py-1 rounded-md text-sm transition-colors"><i class="fas fa-copy mr-1"></i><span>Copy</span></button>
-                                <pre class="text-gray-300 font-mono bg-gray-800/50 p-4 rounded-lg overflow-x-auto pr-20"><code class="citation-text">@software{sakhawat_adib_2025_16176827,
+                                <button class="copy-citation-btn hidden md:block absolute top-2 right-2 bg-gray-700 hover:bg-gray-600 text-gray-300 px-3 py-1 rounded-md text-sm transition-colors"><i class="fas fa-copy mr-1"></i><span>Copy</span></button>
+                                <pre class="text-gray-300 font-mono bg-gray-800/50 p-4 rounded-lg overflow-x-auto pr-0 md:pr-20 text-sm leading-relaxed"><code class="citation-text">@software{sakhawat_adib_2025_16176827,
   author       = {Sakhawat, Adib},
   title        = {Bangladesh Legal Acts Dataset},
   month        = jul,
@@ -520,6 +595,7 @@
   doi          = {10.5281/zenodo.16176827},
   url          = {https://doi.org/10.5281/zenodo.16176827}
 }</code></pre>
+                                <button class="copy-citation-btn md:hidden mt-2 w-full bg-gray-700 hover:bg-gray-600 text-gray-300 px-3 py-2 rounded-md text-sm transition-colors"><i class="fas fa-copy mr-1"></i><span>Copy</span></button>
                             </div>
                         </div>
                     </div>
