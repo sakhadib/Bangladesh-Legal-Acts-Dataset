@@ -128,7 +128,10 @@ document.addEventListener('DOMContentLoaded', function() {
                 <td class="p-4">${act.act_year || 'N/A'}</td>
                 <td class="p-4">${act.act_no || 'N/A'}</td>
                 <td class="p-4 text-right">
-                    <button class="view-json-btn text-teal-400 hover:text-teal-300 mr-4" title="View JSON" data-file="${act.source_file}" data-title="${act.act_title || 'Act Details'}">
+                    <a href="./details/?act=${encodeURIComponent(act.source_file)}" class="text-blue-400 hover:text-blue-300 mr-3" title="View Details" aria-label="View details for ${act.act_title}">
+                        <i class="fas fa-file-alt"></i>
+                    </a>
+                    <button class="view-json-btn text-teal-400 hover:text-teal-300 mr-3" title="View JSON" data-file="${act.source_file}" data-title="${act.act_title || 'Act Details'}">
                         <i class="fas fa-eye"></i>
                     </button>
                     <a href="https://huggingface.co/datasets/sakhadib/Bangladesh-Legal-Acts-Dataset/resolve/main/acts/${act.source_file}" download class="text-teal-400 hover:text-teal-300" title="Download JSON">

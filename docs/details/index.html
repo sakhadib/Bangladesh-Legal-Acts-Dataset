@@ -1,0 +1,1097 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Legal Act Details - Bangladesh Legal Acts Dataset | BLAD</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="View detailed information about specific Bangladesh legal acts from the comprehensive BLAD dataset. Explore full text, sections, and historical context.">
+    <meta name="keywords" content="Bangladesh legal acts, legal dataset, legislative history, Bangladesh laws, legal research, constitutional law, government legislation, legal database, open data, research dataset">
+    <meta name="author" content="Adib Sakhawat">
+    <meta name="robots" content="index, follow">
+    <meta name="language" content="English">
+    <meta name="revisit-after" content="30 days">
+    
+    <!-- Open Graph Meta Tags for Social Media -->
+    <meta property="og:title" content="Legal Act Details - Bangladesh Legal Acts Dataset | BLAD">
+    <meta property="og:description" content="Detailed view of Bangladesh legal acts from the comprehensive BLAD dataset with full text and historical context.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://sakhadib.github.io/Bangladesh-Legal-Acts-Dataset/details/">
+    <meta property="og:image" content="https://avatars.githubusercontent.com/u/111243915?v=4">
+    <meta property="og:site_name" content="Bangladesh Legal Acts Dataset">
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Legal Act Details - Bangladesh Legal Acts Dataset">
+    <meta name="twitter:description" content="Detailed view of Bangladesh legal acts with full text and historical context.">
+    <meta name="twitter:image" content="https://avatars.githubusercontent.com/u/111243915?v=4">
+    <meta name="twitter:creator" content="@sakhadib">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://sakhadib.github.io/Bangladesh-Legal-Acts-Dataset/details/">
+    
+    <!-- Favicon and Icons -->
+    <link rel="icon" type="image/x-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚖️</text></svg>">
+    <link rel="apple-touch-icon" href="https://avatars.githubusercontent.com/u/111243915?v=4">
+    
+    <!-- Additional SEO Meta Tags -->
+    <meta name="geo.region" content="BD">
+    <meta name="geo.country" content="Bangladesh">
+    <meta name="ICBM" content="23.6850, 90.3563">
+    <meta name="geo.position" content="23.6850;90.3563">
+    <meta name="theme-color" content="#14b8a6">
+    <meta name="msapplication-TileColor" content="#14b8a6">
+    
+    <!-- Preconnect for Performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://cdn.tailwindcss.com">
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="../manifest.json">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        /* Loading animations */
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .animate-pulse-custom {
+            animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+        
+        .fade-in {
+            animation: fadeIn 0.6s ease-out;
+        }
+        
+        /* Section styling */
+        .section-card {
+            background: rgba(31, 41, 55, 0.6);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(75, 85, 99, 0.3);
+            border-radius: 0.75rem;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            transition: all 0.3s ease;
+        }
+        
+        .section-card:hover {
+            border-color: rgba(20, 184, 166, 0.5);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+        
+        .section-number {
+            background: linear-gradient(135deg, #14b8a6, #06b6d4);
+            color: white;
+            border-radius: 50%;
+            width: 2rem;
+            height: 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            font-size: 0.875rem;
+            flex-shrink: 0;
+        }
+        
+        /* Copy button styling */
+        .copy-btn {
+            transition: all 0.2s ease;
+        }
+        
+        .copy-btn:hover {
+            background-color: rgba(20, 184, 166, 0.2);
+            color: #14b8a6;
+        }
+        
+        /* Responsive text */
+        .section-text {
+            line-height: 1.7;
+            text-align: justify;
+        }
+        
+        /* Error state */
+        .error-state {
+            background: rgba(239, 68, 68, 0.1);
+            border: 1px solid rgba(239, 68, 68, 0.3);
+            color: #fca5a5;
+        }
+        
+        /* Success state */
+        .success-state {
+            background: rgba(34, 197, 94, 0.1);
+            border: 1px solid rgba(34, 197, 94, 0.3);
+            color: #86efac;
+        }
+        
+        /* Breadcrumb styling */
+        .breadcrumb {
+            color: #9ca3af;
+        }
+        
+        .breadcrumb a {
+            color: #14b8a6;
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+        
+        .breadcrumb a:hover {
+            color: #0d9488;
+        }
+        
+        /* Tag styling */
+        .info-tag {
+            background: rgba(59, 130, 246, 0.2);
+            color: #93c5fd;
+            padding: 0.25rem 0.75rem;
+            border-radius: 1rem;
+            font-size: 0.75rem;
+            font-weight: 500;
+            border: 1px solid rgba(59, 130, 246, 0.3);
+        }
+        
+        .year-tag {
+            background: rgba(168, 85, 247, 0.2);
+            color: #c4b5fd;
+            padding: 0.25rem 0.75rem;
+            border-radius: 1rem;
+            font-size: 0.75rem;
+            font-weight: 500;
+            border: 1px solid rgba(168, 85, 247, 0.3);
+        }
+        
+        /* Loading skeleton */
+        .skeleton {
+            background: linear-gradient(90deg, rgba(55, 65, 81, 0.4) 25%, rgba(75, 85, 99, 0.4) 50%, rgba(55, 65, 81, 0.4) 75%);
+            background-size: 200% 100%;
+            animation: skeleton-loading 1.5s infinite;
+        }
+        
+        @keyframes skeleton-loading {
+            0% { background-position: 200% 0; }
+            100% { background-position: -200% 0; }
+        }
+        
+        /* Mobile responsiveness improvements */
+        @media (max-width: 768px) {
+            .section-card {
+                padding: 1rem;
+            }
+            
+            .glass-effect {
+                padding: 1rem;
+            }
+            
+            h1 {
+                font-size: 1.875rem !important;
+            }
+            
+            h2 {
+                font-size: 1.5rem !important;
+            }
+            
+            .grid.grid-cols-1.md\\:grid-cols-2 {
+                grid-template-columns: 1fr;
+            }
+            
+            .flex.flex-col.lg\\:flex-row {
+                flex-direction: column;
+            }
+            
+            .info-tag, .year-tag {
+                font-size: 0.65rem;
+                padding: 0.2rem 0.5rem;
+            }
+        }
+        
+        /* Print styles */
+        @media print {
+            /* Show print-only elements */
+            .print-only {
+                display: block !important;
+            }
+            
+            /* Hide web-specific elements */
+            .no-print,
+            header,
+            nav,
+            footer,
+            .breadcrumb,
+            .copy-btn,
+            button,
+            .toast,
+            #loading-container,
+            #error-container { 
+                display: none !important; 
+            }
+            
+            /* Reset page styles for document-like appearance */
+            * {
+                box-shadow: none !important;
+                text-shadow: none !important;
+            }
+            
+            body { 
+                background: white !important; 
+                color: black !important;
+                font-family: 'Times New Roman', Times, serif !important;
+                font-size: 12pt !important;
+                line-height: 1.6 !important;
+                margin: 0 !important;
+                padding: 20px !important;
+            }
+            
+            /* Document header styling */
+            #act-title {
+                font-size: 18pt !important;
+                font-weight: bold !important;
+                text-align: center !important;
+                margin-bottom: 20px !important;
+                border-bottom: 2px solid black !important;
+                padding-bottom: 10px !important;
+                color: black !important;
+            }
+            
+            /* Remove glass effects and use clean borders */
+            .glass-effect, 
+            .section-card { 
+                background: white !important; 
+                border: 1px solid #333 !important;
+                border-radius: 0 !important;
+                box-shadow: none !important;
+                backdrop-filter: none !important;
+                margin-bottom: 15px !important;
+                padding: 15px !important;
+            }
+            
+            /* Section styling for document format */
+            .section-card {
+                border: none !important;
+                border-bottom: 1px solid #ddd !important;
+                padding: 10px 0 !important;
+                margin-bottom: 10px !important;
+            }
+            
+            .section-number {
+                background: white !important;
+                color: black !important;
+                border: 2px solid black !important;
+                font-weight: bold !important;
+                margin-right: 15px !important;
+            }
+            
+            .section-text {
+                color: black !important;
+                text-align: justify !important;
+                text-indent: 0 !important;
+                margin: 0 !important;
+            }
+            
+            /* Headers and subheaders */
+            h1, h2, h3, h4, h5, h6 {
+                color: black !important;
+                font-family: 'Times New Roman', Times, serif !important;
+                font-weight: bold !important;
+                margin-top: 20px !important;
+                margin-bottom: 10px !important;
+                page-break-after: avoid !important;
+            }
+            
+            h2 {
+                font-size: 14pt !important;
+                border-bottom: 1px solid black !important;
+                padding-bottom: 5px !important;
+            }
+            
+            h3 {
+                font-size: 12pt !important;
+                font-weight: bold !important;
+            }
+            
+            /* Tags and labels */
+            .info-tag, .year-tag {
+                background: white !important;
+                color: black !important;
+                border: 1px solid black !important;
+                padding: 2px 6px !important;
+                margin: 2px !important;
+                font-size: 10pt !important;
+            }
+            
+            /* Government context and legal context styling */
+            #government-context,
+            #legal-context {
+                border: 2px solid black !important;
+                margin: 20px 0 !important;
+                padding: 15px !important;
+            }
+            
+            /* Grid layouts become single column for print */
+            .grid {
+                display: block !important;
+            }
+            
+            .flex {
+                display: block !important;
+            }
+            
+            /* Text colors */
+            .text-gray-400,
+            .text-gray-300,
+            .text-white,
+            .text-teal-400,
+            .text-blue-400 {
+                color: black !important;
+            }
+            
+            /* Links in print */
+            a {
+                color: black !important;
+                text-decoration: underline !important;
+            }
+            
+            /* Page breaks */
+            .section-card {
+                page-break-inside: avoid !important;
+            }
+            
+            h2 {
+                page-break-before: auto !important;
+                page-break-after: avoid !important;
+            }
+            
+            /* Force page break before certain sections */
+            #legal-context {
+                page-break-before: page !important;
+            }
+            
+            /* Keep sections together when possible */
+            #government-context,
+            #footnotes-section {
+                page-break-inside: avoid !important;
+            }
+            
+            /* Section numbering for print */
+            .section-card:before {
+                content: "Section " counter(section-counter) ": " !important;
+                font-weight: bold !important;
+                display: block !important;
+                margin-bottom: 5px !important;
+            }
+            
+            .section-card {
+                counter-increment: section-counter !important;
+            }
+            
+            #sections-container {
+                counter-reset: section-counter !important;
+            }
+            
+            /* Footer information */
+            #copyright-text {
+                font-size: 10pt !important;
+                font-style: italic !important;
+                margin-top: 30px !important;
+                border-top: 1px solid black !important;
+                padding-top: 10px !important;
+            }
+            
+            /* Source URL formatting */
+            #source-url {
+                word-break: break-all !important;
+                font-size: 10pt !important;
+            }
+            
+            /* Document metadata section */
+            .grid.grid-cols-1.md\\:grid-cols-2 > div {
+                margin-bottom: 8px !important;
+            }
+            
+            /* Footnotes styling */
+            #footnotes-section {
+                border-top: 2px solid black !important;
+                margin-top: 30px !important;
+                padding-top: 15px !important;
+            }
+            
+            /* Hide certain icons that don't print well */
+            .fas, .fab {
+                display: none !important;
+            }
+            
+            /* Ensure proper spacing between sections */
+            section {
+                margin-bottom: 25px !important;
+            }
+            
+            /* Print-specific title page */
+            .print-title {
+                text-align: center !important;
+                margin-bottom: 30px !important;
+            }
+            
+            /* Page numbering would need to be handled by browser print settings */
+            @page {
+                margin: 1in !important;
+                size: letter !important;
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-gray-200">
+
+    <!-- Header -->
+    <header class="bg-gray-800/50 backdrop-blur-lg sticky top-0 z-50" role="banner">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center" role="navigation" aria-label="Main navigation">
+            <a href="../" class="text-2xl font-bold text-white" aria-label="Bangladesh Legal Acts Dataset - Home">
+                <i class="fas fa-balance-scale mr-2 text-teal-400"></i>
+                <span class="hidden sm:inline">BLAD</span>
+                <span class="sm:hidden">BLAD</span>
+            </a>
+            <div class="hidden md:flex items-center space-x-6">
+                <a href="../#overview" class="hover:text-teal-400 transition-colors">Overview</a>
+                <a href="../#stats" class="hover:text-teal-400 transition-colors">Statistics</a>
+                <a href="../#download" class="hover:text-teal-400 transition-colors">Download</a>
+                <a href="https://github.com/sakhadib/Bangladesh-Legal-Dataset" target="_blank" rel="noopener noreferrer" class="bg-teal-500 hover:bg-teal-600 text-white font-bold py-2 px-4 rounded-full transition-colors" aria-label="View project on GitHub (opens in new tab)">
+                    <i class="fab fa-github mr-2"></i>GitHub
+                </a>
+            </div>
+            <button id="mobile-menu-button" class="md:hidden text-white focus:outline-none" aria-label="Toggle mobile menu" aria-expanded="false">
+                <i class="fas fa-bars text-xl"></i>
+            </button>
+        </nav>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden px-6 pb-4" role="menu">
+            <a href="../#overview" class="block py-2 hover:text-teal-400" role="menuitem">Overview</a>
+            <a href="../#stats" class="block py-2 hover:text-teal-400" role="menuitem">Statistics</a>
+            <a href="../#download" class="block py-2 hover:text-teal-400" role="menuitem">Download</a>
+            <a href="https://github.com/sakhadib/Bangladesh-Legal-Dataset" target="_blank" rel="noopener noreferrer" class="block mt-2 bg-teal-500 hover:bg-teal-600 text-white font-bold py-2 px-4 rounded-full text-center" role="menuitem" aria-label="View project on GitHub (opens in new tab)">
+                <i class="fab fa-github mr-2"></i>GitHub
+            </a>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-6 py-8" role="main">
+
+        <!-- Breadcrumb Navigation -->
+        <nav class="breadcrumb mb-6 text-sm" aria-label="Breadcrumb">
+            <a href="../" class="hover:underline">
+                <i class="fas fa-home mr-1"></i>Home
+            </a>
+            <span class="mx-2">/</span>
+            <span id="breadcrumb-title">Legal Act Details</span>
+        </nav>
+
+        <!-- Loading State -->
+        <div id="loading-container" class="text-center py-20">
+            <div class="animate-pulse-custom">
+                <i class="fas fa-balance-scale text-6xl text-teal-400 mb-4"></i>
+            </div>
+            <h2 class="text-2xl font-bold text-white mb-2">Loading Legal Act Details</h2>
+            <p class="text-gray-400">Fetching data from HuggingFace repository...</p>
+            <div class="flex justify-center mt-6">
+                <div class="flex space-x-2">
+                    <div class="w-3 h-3 bg-teal-400 rounded-full animate-pulse"></div>
+                    <div class="w-3 h-3 bg-teal-400 rounded-full animate-pulse" style="animation-delay: 0.1s;"></div>
+                    <div class="w-3 h-3 bg-teal-400 rounded-full animate-pulse" style="animation-delay: 0.2s;"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Error State -->
+        <div id="error-container" class="hidden">
+            <div class="glass-effect error-state rounded-xl p-8 text-center">
+                <i class="fas fa-exclamation-triangle text-6xl mb-4"></i>
+                <h2 class="text-2xl font-bold mb-4">Error Loading Legal Act</h2>
+                <p class="mb-6" id="error-message">Failed to load the requested legal act. Please check the URL and try again.</p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <button onclick="retryFetch()" class="bg-red-500 hover:bg-red-600 text-white font-bold py-3 px-6 rounded-lg transition-colors">
+                        <i class="fas fa-redo mr-2"></i>Retry
+                    </button>
+                    <a href="../" class="bg-gray-600 hover:bg-gray-700 text-white font-bold py-3 px-6 rounded-lg transition-colors">
+                        <i class="fas fa-arrow-left mr-2"></i>Back to Home
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Content Container -->
+        <div id="content-container" class="hidden fade-in">
+            
+            <!-- Print-only document header -->
+            <div class="print-only" style="display: none;">
+                <div class="print-title">
+                    <h1 style="font-size: 20pt; margin-bottom: 5px;">Bangladesh Legal Acts Dataset</h1>
+                    <p style="font-size: 12pt; margin-bottom: 20px; font-style: italic;">Official Legal Document</p>
+                    <hr style="border: 1px solid black; margin-bottom: 20px;">
+                </div>
+            </div>
+            
+            <!-- Act Header -->
+            <section class="glass-effect rounded-xl p-8 mb-8">
+                <div class="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-6">
+                    <div class="flex-1">
+                        <h1 id="act-title" class="text-3xl lg:text-4xl font-bold text-white mb-4 leading-tight"></h1>
+                        <div class="flex flex-wrap gap-3 mb-4">
+                            <span id="act-number" class="info-tag"></span>
+                            <span id="act-year" class="year-tag"></span>
+                            <span id="language-tag" class="info-tag"></span>
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
+                            <div>
+                                <span class="text-gray-400">Publication Date:</span>
+                                <span id="publication-date" class="text-white ml-2"></span>
+                            </div>
+                            <div>
+                                <span class="text-gray-400">Token Count:</span>
+                                <span id="token-count" class="text-white ml-2"></span>
+                            </div>
+                            <div>
+                                <span class="text-gray-400">Sections:</span>
+                                <span id="section-count" class="text-white ml-2"></span>
+                            </div>
+                            <div>
+                                <span class="text-gray-400">Repealed:</span>
+                                <span id="repealed-status" class="ml-2"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex flex-col gap-3 no-print">
+                        <button onclick="copyActUrl()" class="copy-btn bg-gray-700 hover:bg-gray-600 text-gray-300 px-4 py-2 rounded-lg transition-colors">
+                            <i class="fas fa-link mr-2"></i>Copy URL
+                        </button>
+                        <button onclick="downloadActJson()" class="copy-btn bg-teal-600 hover:bg-teal-700 text-white px-4 py-2 rounded-lg transition-colors">
+                            <i class="fas fa-download mr-2"></i>Download JSON
+                        </button>
+                        <button onclick="printDocument()" class="copy-btn bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg transition-colors">
+                            <i class="fas fa-print mr-2"></i>Print
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Government Context Section -->
+            <section id="government-context" class="glass-effect rounded-xl p-6 mb-8">
+                <h2 class="text-2xl font-bold text-white mb-4">
+                    <i class="fas fa-landmark mr-2 text-teal-400"></i>Government Context
+                </h2>
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                    <div>
+                        <h3 class="text-lg font-semibold text-teal-400 mb-3">Government System</h3>
+                        <div class="space-y-2 text-sm">
+                            <div>
+                                <span class="text-gray-400">System:</span>
+                                <span id="govt-system" class="text-white ml-2"></span>
+                            </div>
+                            <div>
+                                <span class="text-gray-400">Period:</span>
+                                <span id="govt-period" class="text-white ml-2"></span>
+                            </div>
+                            <div>
+                                <span class="text-gray-400">Years in Power:</span>
+                                <span id="years-in-power" class="text-white ml-2"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-semibold text-teal-400 mb-3">Head of State</h3>
+                        <div class="space-y-2 text-sm">
+                            <div>
+                                <span class="text-gray-400">Name:</span>
+                                <span id="head-govt-name" class="text-white ml-2"></span>
+                            </div>
+                            <div>
+                                <span class="text-gray-400">Designation:</span>
+                                <span id="head-govt-designation" class="text-white ml-2"></span>
+                            </div>
+                            <div>
+                                <span class="text-gray-400">How Got Power:</span>
+                                <span id="how-got-power" class="text-white ml-2"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="govt-note" class="mt-4 p-3 bg-yellow-900/30 border border-yellow-700/50 rounded-lg text-yellow-200 text-sm hidden">
+                    <i class="fas fa-info-circle mr-2"></i>
+                    <span id="govt-note-text"></span>
+                </div>
+            </section>
+
+            <!-- Legal System Context Section -->
+            <section id="legal-context" class="glass-effect rounded-xl p-6 mb-8">
+                <h2 class="text-2xl font-bold text-white mb-4">
+                    <i class="fas fa-gavel mr-2 text-teal-400"></i>Legal System Context
+                </h2>
+                <div id="legal-context-content">
+                    <!-- This will be populated dynamically -->
+                </div>
+            </section>
+
+            <!-- Sections Content -->
+            <section class="mb-8">
+                <h2 class="text-2xl font-bold text-white mb-6">
+                    <i class="fas fa-list-ol mr-2 text-teal-400"></i>Act Sections
+                </h2>
+                <div id="sections-container">
+                    <!-- Sections will be populated here -->
+                </div>
+            </section>
+
+            <!-- Footnotes Section -->
+            <section id="footnotes-section" class="glass-effect rounded-xl p-6 mb-8 hidden">
+                <h2 class="text-2xl font-bold text-white mb-4">
+                    <i class="fas fa-sticky-note mr-2 text-teal-400"></i>Footnotes
+                </h2>
+                <div id="footnotes-container">
+                    <!-- Footnotes will be populated here -->
+                </div>
+            </section>
+
+            <!-- Copyright and Source Section -->
+            <section class="glass-effect rounded-xl p-6">
+                <h2 class="text-xl font-bold text-white mb-4">
+                    <i class="fas fa-copyright mr-2 text-teal-400"></i>Source Information
+                </h2>
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 text-sm">
+                    <div>
+                        <h3 class="font-semibold text-teal-400 mb-2">Copyright</h3>
+                        <p id="copyright-text" class="text-gray-300"></p>
+                    </div>
+                    <div>
+                        <h3 class="font-semibold text-teal-400 mb-2">Source</h3>
+                        <a id="source-url" href="#" target="_blank" rel="noopener noreferrer" class="text-blue-400 hover:text-blue-300 break-all">
+                            <!-- URL will be inserted here -->
+                        </a>
+                        <div class="mt-2">
+                            <span class="text-gray-400">Fetched:</span>
+                            <span id="fetch-timestamp" class="text-white ml-2"></span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900/70 backdrop-blur-lg border-t border-teal-500/20 mt-20 text-gray-300" role="contentinfo">
+        <div class="container mx-auto px-6 py-12">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div>
+                    <h3 class="text-lg font-bold text-white mb-4">
+                        <i class="fas fa-balance-scale mr-2 text-teal-400"></i>
+                        Bangladesh Legal Acts Dataset
+                    </h3>
+                    <p class="text-sm text-gray-400 leading-relaxed">
+                        A comprehensive collection of Bangladesh legal acts from 1799-2025, 
+                        providing researchers and legal professionals with valuable historical insights.
+                    </p>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold text-white mb-4">Quick Links</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="../" class="text-gray-400 hover:text-teal-400 transition-colors">Home</a></li>
+                        <li><a href="../#download" class="text-gray-400 hover:text-teal-400 transition-colors">Download Dataset</a></li>
+                        <li><a href="https://github.com/sakhadib/Bangladesh-Legal-Dataset" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-teal-400 transition-colors">GitHub Repository</a></li>
+                        <li><a href="https://huggingface.co/datasets/sakhadib/Bangladesh-Legal-Acts-Dataset" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-teal-400 transition-colors">HuggingFace Dataset</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold text-white mb-4">Contact</h4>
+                    <div class="space-y-2 text-sm text-gray-400">
+                        <p>
+                            <i class="fas fa-user mr-2 text-teal-400"></i>
+                            Adib Sakhawat
+                        </p>
+                        <p>
+                            <i class="fas fa-envelope mr-2 text-teal-400"></i>
+                            <a href="mailto:contact@sakhawatadib.com" class="hover:text-teal-400 transition-colors">contact@sakhawatadib.com</a>
+                        </p>
+                        <p>
+                            <i class="fab fa-github mr-2 text-teal-400"></i>
+                            <a href="https://github.com/sakhadib" target="_blank" rel="noopener noreferrer" class="hover:text-teal-400 transition-colors">@sakhadib</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-12 border-t border-gray-800 pt-6 text-center text-sm text-gray-500">
+                <p>&copy; 2025 Adib Sakhawat. Licensed under Creative Commons Attribution 4.0 International License.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Global variables
+        let actData = null;
+        let currentActFilename = null;
+
+        // Get filename from URL parameters
+        function getActFilename() {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get('act') || urlParams.get('file');
+        }
+
+        // Fetch act data from HuggingFace
+        async function fetchActData(filename) {
+            try {
+                const baseUrl = 'https://huggingface.co/datasets/sakhadib/Bangladesh-Legal-Acts-Dataset/resolve/main/acts/';
+                const url = baseUrl + encodeURIComponent(filename);
+                
+                const response = await fetch(url);
+                if (!response.ok) {
+                    throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+                }
+                
+                const data = await response.json();
+                return data;
+            } catch (error) {
+                console.error('Error fetching act data:', error);
+                throw error;
+            }
+        }
+
+        // Show error state
+        function showError(message) {
+            document.getElementById('loading-container').classList.add('hidden');
+            document.getElementById('content-container').classList.add('hidden');
+            document.getElementById('error-container').classList.remove('hidden');
+            document.getElementById('error-message').textContent = message;
+        }
+
+        // Show content
+        function showContent() {
+            document.getElementById('loading-container').classList.add('hidden');
+            document.getElementById('error-container').classList.add('hidden');
+            document.getElementById('content-container').classList.remove('hidden');
+        }
+
+        // Retry fetch
+        function retryFetch() {
+            document.getElementById('error-container').classList.add('hidden');
+            document.getElementById('loading-container').classList.remove('hidden');
+            loadActDetails();
+        }
+
+        // Copy act URL
+        function copyActUrl() {
+            navigator.clipboard.writeText(window.location.href).then(() => {
+                showToast('URL copied to clipboard!', 'success');
+            }).catch(() => {
+                showToast('Failed to copy URL', 'error');
+            });
+        }
+
+        // Download act JSON
+        function downloadActJson() {
+            if (!actData) return;
+            
+            const dataStr = JSON.stringify(actData, null, 2);
+            const dataBlob = new Blob([dataStr], {type: 'application/json'});
+            const url = URL.createObjectURL(dataBlob);
+            const link = document.createElement('a');
+            link.href = url;
+            link.download = `${currentActFilename}`;
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            URL.revokeObjectURL(url);
+            
+            showToast('JSON file downloaded!', 'success');
+        }
+
+        // Print document with enhanced formatting
+        function printDocument() {
+            if (!actData) return;
+            
+            // Update print-only header with act details
+            const printTitle = document.querySelector('.print-only .print-title h1');
+            const printSubtitle = document.querySelector('.print-only .print-title p');
+            
+            if (printTitle) {
+                printTitle.textContent = actData.act_title;
+            }
+            if (printSubtitle) {
+                printSubtitle.textContent = `Act No. ${actData.act_no} of ${actData.act_year} • Printed on ${new Date().toLocaleDateString()}`;
+            }
+            
+            // Show a brief message before printing
+            showToast('Preparing document for printing...', 'info');
+            
+            // Small delay to ensure the toast is visible before print dialog
+            setTimeout(() => {
+                window.print();
+            }, 500);
+        }
+
+        // Show toast notification
+        function showToast(message, type = 'info') {
+            const toast = document.createElement('div');
+            toast.className = `fixed top-4 right-4 z-50 px-6 py-3 rounded-lg text-white font-medium transition-all duration-300 transform translate-x-full`;
+            
+            if (type === 'success') {
+                toast.classList.add('bg-green-600');
+                toast.innerHTML = `<i class="fas fa-check mr-2"></i>${message}`;
+            } else if (type === 'error') {
+                toast.classList.add('bg-red-600');
+                toast.innerHTML = `<i class="fas fa-times mr-2"></i>${message}`;
+            } else {
+                toast.classList.add('bg-blue-600');
+                toast.innerHTML = `<i class="fas fa-info mr-2"></i>${message}`;
+            }
+            
+            document.body.appendChild(toast);
+            
+            // Animate in
+            setTimeout(() => {
+                toast.classList.remove('translate-x-full');
+            }, 100);
+            
+            // Animate out and remove
+            setTimeout(() => {
+                toast.classList.add('translate-x-full');
+                setTimeout(() => {
+                    document.body.removeChild(toast);
+                }, 300);
+            }, 3000);
+        }
+
+        // Populate act details
+        function populateActDetails(data) {
+            actData = data;
+            
+            // Update page title and breadcrumb
+            document.title = `${data.act_title} - Bangladesh Legal Acts Dataset`;
+            document.getElementById('breadcrumb-title').textContent = data.act_title;
+            
+            // Populate header information
+            document.getElementById('act-title').textContent = data.act_title;
+            document.getElementById('act-number').textContent = `Act No. ${data.act_no}`;
+            document.getElementById('act-year').textContent = data.act_year;
+            document.getElementById('language-tag').textContent = data.language.charAt(0).toUpperCase() + data.language.slice(1);
+            document.getElementById('publication-date').textContent = data.publication_date;
+            document.getElementById('token-count').textContent = data.token_count.toLocaleString();
+            document.getElementById('section-count').textContent = data.sections.length;
+            
+            // Repealed status
+            const repealedEl = document.getElementById('repealed-status');
+            if (data.csv_metadata.is_repealed) {
+                repealedEl.innerHTML = '<span class="text-red-400"><i class="fas fa-times mr-1"></i>Yes</span>';
+            } else {
+                repealedEl.innerHTML = '<span class="text-green-400"><i class="fas fa-check mr-1"></i>No</span>';
+            }
+            
+            // Populate government context
+            const govtContext = data.government_context;
+            document.getElementById('govt-system').textContent = govtContext.govt_system;
+            document.getElementById('govt-period').textContent = govtContext.period_years;
+            document.getElementById('years-in-power').textContent = govtContext.years_in_power || 'Unknown';
+            document.getElementById('head-govt-name').textContent = govtContext.head_govt_name;
+            document.getElementById('head-govt-designation').textContent = govtContext.head_govt_designation;
+            document.getElementById('how-got-power').textContent = govtContext.how_got_power;
+            
+            // Show government note if available
+            if (govtContext.note) {
+                document.getElementById('govt-note').classList.remove('hidden');
+                document.getElementById('govt-note-text').textContent = govtContext.note;
+            }
+            
+            // Populate legal system context
+            populateLegalContext(data.legal_system_context);
+            
+            // Populate sections
+            populateSections(data.sections);
+            
+            // Populate footnotes if available
+            if (data.footnotes && data.footnotes.length > 0) {
+                populateFootnotes(data.footnotes);
+            }
+            
+            // Populate source information
+            document.getElementById('copyright-text').textContent = data.copyright_info.copyright_text;
+            document.getElementById('source-url').href = data.source_url;
+            document.getElementById('source-url').textContent = data.source_url;
+            document.getElementById('fetch-timestamp').textContent = new Date(data.fetch_timestamp).toLocaleString();
+            
+            showContent();
+        }
+
+        // Populate legal system context
+        function populateLegalContext(legalContext) {
+            const container = document.getElementById('legal-context-content');
+            
+            if (!legalContext) {
+                container.innerHTML = '<p class="text-gray-400">Legal system context not available for this act.</p>';
+                return;
+            }
+            
+            let html = '';
+            
+            // Period info
+            if (legalContext.period_info) {
+                html += `
+                    <div class="mb-6">
+                        <h3 class="text-lg font-semibold text-teal-400 mb-3">Historical Period</h3>
+                        <div class="bg-gray-800/50 rounded-lg p-4">
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm">
+                                <div><span class="text-gray-400">Period:</span> <span class="text-white">${legalContext.period_info.period_name}</span></div>
+                                <div><span class="text-gray-400">Year Range:</span> <span class="text-white">${legalContext.period_info.year_range}</span></div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }
+            
+            // Legal framework
+            if (legalContext.legal_framework) {
+                const framework = legalContext.legal_framework;
+                html += `
+                    <div class="mb-6">
+                        <h3 class="text-lg font-semibold text-teal-400 mb-3">Legal Framework</h3>
+                        <div class="bg-gray-800/50 rounded-lg p-4 space-y-3">
+                            ${framework.legal_basis ? `<div class="text-sm"><span class="text-gray-400">Legal Basis:</span> <span class="text-white">${framework.legal_basis}</span></div>` : ''}
+                            ${framework.primary_laws ? `
+                                <div>
+                                    <span class="text-gray-400 text-sm">Primary Laws:</span>
+                                    <div class="flex flex-wrap gap-2 mt-1">
+                                        ${framework.primary_laws.map(law => `<span class="info-tag">${law}</span>`).join('')}
+                                    </div>
+                                </div>
+                            ` : ''}
+                        </div>
+                    </div>
+                `;
+            }
+            
+            // Key characteristics
+            if (legalContext.key_characteristics) {
+                html += `
+                    <div class="mb-6">
+                        <h3 class="text-lg font-semibold text-teal-400 mb-3">Key Characteristics</h3>
+                        <div class="bg-gray-800/50 rounded-lg p-4">
+                            <ul class="space-y-2 text-sm">
+                                ${legalContext.key_characteristics.map(char => `<li class="text-gray-300"><i class="fas fa-check text-teal-400 mr-2"></i>${char}</li>`).join('')}
+                            </ul>
+                        </div>
+                    </div>
+                `;
+            }
+            
+            container.innerHTML = html;
+        }
+
+        // Populate sections
+        function populateSections(sections) {
+            const container = document.getElementById('sections-container');
+            let html = '';
+            
+            sections.forEach((section, index) => {
+                html += `
+                    <div class="section-card">
+                        <div class="flex items-start gap-4">
+                            <div class="section-number">${index + 1}</div>
+                            <div class="flex-1">
+                                <div class="section-text text-gray-300">${section.section_content}</div>
+                                <button onclick="copySection('${index}')" class="copy-btn mt-3 text-xs text-gray-500 hover:text-teal-400 transition-colors">
+                                    <i class="fas fa-copy mr-1"></i>Copy Section
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            });
+            
+            container.innerHTML = html;
+        }
+
+        // Populate footnotes
+        function populateFootnotes(footnotes) {
+            const section = document.getElementById('footnotes-section');
+            const container = document.getElementById('footnotes-container');
+            
+            let html = '';
+            footnotes.forEach((footnote, index) => {
+                html += `
+                    <div class="mb-4 p-4 bg-gray-800/50 rounded-lg">
+                        <div class="text-sm text-gray-300">${footnote.footnote_text}</div>
+                    </div>
+                `;
+            });
+            
+            container.innerHTML = html;
+            section.classList.remove('hidden');
+        }
+
+        // Copy section content
+        function copySection(index) {
+            if (!actData || !actData.sections[index]) return;
+            
+            const sectionContent = actData.sections[index].section_content;
+            navigator.clipboard.writeText(sectionContent).then(() => {
+                showToast(`Section ${parseInt(index) + 1} copied to clipboard!`, 'success');
+            }).catch(() => {
+                showToast('Failed to copy section', 'error');
+            });
+        }
+
+        // Mobile menu toggle
+        document.getElementById('mobile-menu-button').addEventListener('click', () => {
+            const mobileMenu = document.getElementById('mobile-menu');
+            const button = document.getElementById('mobile-menu-button');
+            const isOpen = !mobileMenu.classList.contains('hidden');
+            
+            if (isOpen) {
+                mobileMenu.classList.add('hidden');
+                button.setAttribute('aria-expanded', 'false');
+            } else {
+                mobileMenu.classList.remove('hidden');
+                button.setAttribute('aria-expanded', 'true');
+            }
+        });
+
+        // Main load function
+        async function loadActDetails() {
+            try {
+                currentActFilename = getActFilename();
+                
+                if (!currentActFilename) {
+                    throw new Error('No act filename specified in URL parameters. Please provide ?act=filename.json');
+                }
+                
+                const data = await fetchActData(currentActFilename);
+                populateActDetails(data);
+                
+            } catch (error) {
+                console.error('Error loading act details:', error);
+                showError(error.message);
+            }
+        }
+
+        // Initialize page
+        document.addEventListener('DOMContentLoaded', () => {
+            loadActDetails();
+        });
+    </script>
+</body>
+</html>
