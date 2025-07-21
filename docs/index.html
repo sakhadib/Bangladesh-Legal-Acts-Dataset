@@ -20,6 +20,73 @@
             backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 255, 255, 0.2);
         }
+        
+        /* Custom loading animations */
+        @keyframes scaleUpDown {
+            0%, 100% { transform: scaleY(1); }
+            50% { transform: scaleY(1.5); }
+        }
+        
+        @keyframes floatUpDown {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        @keyframes glow {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 1; }
+        }
+        
+        .animate-scale {
+            animation: scaleUpDown 1.5s ease-in-out infinite;
+        }
+        
+        .animate-float {
+            animation: floatUpDown 2s ease-in-out infinite;
+        }
+        
+        .animate-glow {
+            animation: glow 2s ease-in-out infinite;
+        }
+        
+        #dataset-loader .w-3:nth-child(1) { animation-delay: 0s; }
+        #dataset-loader .w-3:nth-child(2) { animation-delay: 0.1s; }
+        #dataset-loader .w-3:nth-child(3) { animation-delay: 0.2s; }
+        #dataset-loader .w-3:nth-child(4) { animation-delay: 0.3s; }
+        #dataset-loader .w-3:nth-child(5) { animation-delay: 0.4s; }
+
+        /* Citation Tabs */
+        .citation-tab {
+            padding: 0.75rem 1.5rem;
+            cursor: pointer;
+            border: none;
+            background: transparent;
+            color: #9ca3af; /* gray-400 */
+            border-bottom: 3px solid transparent;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+            font-weight: 500;
+        }
+        .citation-tab:hover {
+            color: #14b8a6; /* teal-500 */
+            background-color: rgba(20, 184, 166, 0.1);
+        }
+        .citation-tab.active {
+            color: #14b8a6; /* teal-500 */
+            border-bottom-color: #14b8a6; /* teal-500 */
+            font-weight: 600;
+        }
+        .citation-panel {
+            display: none;
+        }
+        .citation-panel.active {
+            display: block;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
     </style>
 </head>
 <body class="bg-gray-900 text-gray-200">
@@ -253,40 +320,130 @@
             </div>
         </section>
 
+        <hr id="download">
+
         <!-- Download Section -->
-        <section id="download" class="mb-20">
-            <h2 class="text-3xl font-bold text-center mb-10 text-white">Download the Data</h2>
+        <section  class="mb-20">
+            <h2 class="text-6xl font-bold text-center mb-10 mt-10 text-white">Download the Data</h2>
             <div class="flex flex-col md:flex-row justify-center items-center gap-6 mb-12">
-                <a href="../Data/Contextualized_Bangladesh_Legal_Acts.json" download class="w-full md:w-auto bg-gradient-to-r from-teal-500 to-cyan-500 hover:from-teal-600 hover:to-cyan-600 text-white font-bold py-4 px-8 rounded-full text-lg transition-transform transform hover:scale-105 flex items-center justify-center">
+                <a href="https://huggingface.co/datasets/sakhadib/Bangladesh-Legal-Acts-Dataset/resolve/main/Contextualized_Bangladesh_Legal_Acts.json?download=true" download class="w-full md:w-auto bg-gradient-to-r from-teal-500 to-cyan-500 hover:from-teal-600 hover:to-cyan-600 text-white font-bold py-4 px-8 rounded-full text-lg transition-transform transform hover:scale-105 flex items-center justify-center">
                     <i class="fas fa-download mr-3"></i>
                     Download Full Dataset (JSON)
                 </a>
                 
             </div>
 
+            <!-- Citation Section -->
+            <section id="citation" class="mb-20">
+                <h2 class="text-3xl font-bold text-center mb-10 text-white">How to Cite This Dataset</h2>
+                <div class="glass-effect rounded-xl p-6 max-w-4xl mx-auto">
+                    <div class="border-b border-gray-700 mb-4">
+                        <nav id="citation-tabs" class="flex -mb-px" aria-label="Tabs">
+                            <button class="citation-tab active" data-target="panel-apa">APA</button>
+                            <button class="citation-tab" data-target="panel-mla">MLA</button>
+                            <button class="citation-tab" data-target="panel-harvard">Harvard</button>
+                            <button class="citation-tab" data-target="panel-bibtex">BibTeX</button>
+                        </nav>
+                    </div>
+                    <div>
+                        <div id="panel-apa" class="citation-panel active">
+                            <div class="relative">
+                                <button class="copy-citation-btn absolute top-2 right-2 bg-gray-700 hover:bg-gray-600 text-gray-300 px-3 py-1 rounded-md text-sm transition-colors"><i class="fas fa-copy mr-1"></i><span>Copy</span></button>
+                                <p class="citation-text text-gray-300 font-mono bg-gray-800/50 p-4 rounded-lg pr-20">Sakhawat, A. (2025). <i>Bangladesh Legal Acts Dataset</i>. Zenodo. https://doi.org/10.5281/zenodo.16176827</p>
+                            </div>
+                        </div>
+                        <div id="panel-mla" class="citation-panel">
+                            <div class="relative">
+                                <button class="copy-citation-btn absolute top-2 right-2 bg-gray-700 hover:bg-gray-600 text-gray-300 px-3 py-1 rounded-md text-sm transition-colors"><i class="fas fa-copy mr-1"></i><span>Copy</span></button>
+                                <p class="citation-text text-gray-300 font-mono bg-gray-800/50 p-4 rounded-lg pr-20">Sakhawat, Adib. <i>Bangladesh Legal Acts Dataset</i>. Zenodo, 2025, doi:10.5281/zenodo.16176827.</p>
+                            </div>
+                        </div>
+                        <div id="panel-harvard" class="citation-panel">
+                            <div class="relative">
+                                <button class="copy-citation-btn absolute top-2 right-2 bg-gray-700 hover:bg-gray-600 text-gray-300 px-3 py-1 rounded-md text-sm transition-colors"><i class="fas fa-copy mr-1"></i><span>Copy</span></button>
+                                <p class="citation-text text-gray-300 font-mono bg-gray-800/50 p-4 rounded-lg pr-20">Sakhawat, A. (2025) “Bangladesh Legal Acts Dataset,” Zenodo. Available at: https://doi.org/10.5281/zenodo.16176827.</p>
+                            </div>
+                        </div>
+                        <div id="panel-bibtex" class="citation-panel">
+                            <div class="relative">
+                                <button class="copy-citation-btn absolute top-2 right-2 bg-gray-700 hover:bg-gray-600 text-gray-300 px-3 py-1 rounded-md text-sm transition-colors"><i class="fas fa-copy mr-1"></i><span>Copy</span></button>
+                                <pre class="text-gray-300 font-mono bg-gray-800/50 p-4 rounded-lg overflow-x-auto pr-20"><code class="citation-text">@software{sakhawat_adib_2025_16176827,
+  author       = {Sakhawat, Adib},
+  title        = {Bangladesh Legal Acts Dataset},
+  month        = jul,
+  year         = 2025,
+  publisher    = {Zenodo},
+  doi          = {10.5281/zenodo.16176827},
+  url          = {https://doi.org/10.5281/zenodo.16176827}
+}</code></pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
             <!-- Individual Acts Table -->
             <div class="glass-effect rounded-xl p-6">
                 <h3 class="text-2xl font-bold mb-6 text-white">Browse Individual Acts</h3>
                 <div class="mb-4">
-                    <input type="text" id="searchInput" class="w-full bg-gray-800 border border-gray-700 rounded-lg px-4 py-2 text-white focus:outline-none focus:ring-2 focus:ring-teal-500" placeholder="Search by title, year, or act number...">
+                    <input type="text" id="searchInput" class="w-full bg-gray-800 border border-gray-700 rounded-lg px-4 py-2 text-white focus:outline-none focus:ring-2 focus:ring-teal-500" placeholder="Search by title, year, or act number..." disabled>
                 </div>
-                <div class="overflow-x-auto">
-                    <table class="w-full text-left">
-                        <thead class="border-b border-gray-700">
-                            <tr>
-                                <th class="p-4">Act Title</th>
-                                <th class="p-4">Year</th>
-                                <th class="p-4">Act No.</th>
-                                <th class="p-4 text-right">Download</th>
-                            </tr>
-                        </thead>
-                        <tbody id="acts-table-body">
-                            <!-- Rows will be inserted here by JavaScript -->
-                        </tbody>
-                    </table>
+                
+                <!-- Loading Animation -->
+                <div id="dataset-loader" class="flex flex-col items-center justify-center py-16">
+                    <div class="relative">
+                        <!-- Animated scales -->
+                        <div class="flex items-end space-x-2 mb-4">
+                            <div class="w-3 h-8 bg-teal-400 rounded-sm animate-scale"></div>
+                            <div class="w-3 h-12 bg-teal-500 rounded-sm animate-scale"></div>
+                            <div class="w-3 h-6 bg-teal-400 rounded-sm animate-scale"></div>
+                            <div class="w-3 h-10 bg-teal-500 rounded-sm animate-scale"></div>
+                            <div class="w-3 h-4 bg-teal-400 rounded-sm animate-scale"></div>
+                        </div>
+                        <!-- Floating legal icons -->
+                        <div class="absolute -top-8 -left-8 text-teal-400/30 animate-float">
+                            <i class="fas fa-balance-scale text-lg animate-glow"></i>
+                        </div>
+                        <div class="absolute -top-4 -right-6 text-teal-500/30 animate-float" style="animation-delay: 0.5s">
+                            <i class="fas fa-gavel text-sm animate-glow" style="animation-delay: 0.5s"></i>
+                        </div>
+                        <div class="absolute -bottom-2 -left-4 text-teal-400/30 animate-float" style="animation-delay: 1s">
+                            <i class="fas fa-file-alt text-xs animate-glow" style="animation-delay: 1s"></i>
+                        </div>
+                    </div>
+                    <div class="mt-6 text-center">
+                        <p class="text-white font-semibold mb-2">Loading Legal Acts Dataset</p>
+                        <p class="text-gray-400 text-sm">Fetching 1,484+ acts from repository...</p>
+                        <div class="flex justify-center mt-3">
+                            <div class="flex space-x-1">
+                                <div class="w-2 h-2 bg-teal-400 rounded-full animate-ping"></div>
+                                <div class="w-2 h-2 bg-teal-500 rounded-full animate-ping" style="animation-delay: 0.2s"></div>
+                                <div class="w-2 h-2 bg-teal-400 rounded-full animate-ping" style="animation-delay: 0.4s"></div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                 <div class="flex justify-center mt-6">
-                    <button id="loadMoreBtn" class="bg-gray-700 hover:bg-gray-600 text-white font-bold py-2 px-6 rounded-full transition-colors">Load More</button>
+                
+                <!-- Table Container (initially hidden) -->
+                <div id="table-container" class="hidden">
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-left">
+                            <thead class="border-b border-gray-700">
+                                <tr>
+                                    <th class="p-4">Act Title</th>
+                                    <th class="p-4">Year</th>
+                                    <th class="p-4">Act No.</th>
+                                    <th class="p-4 text-right">Download</th>
+                                </tr>
+                            </thead>
+                            <tbody id="acts-table-body">
+                                <!-- Rows will be inserted here by JavaScript -->
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="flex justify-center mt-6">
+                        <button id="loadMoreBtn" class="bg-gray-700 hover:bg-gray-600 text-white font-bold py-2 px-6 rounded-full transition-colors">Load More</button>
+                    </div>
                 </div>
             </div>
         </section>
@@ -294,10 +451,52 @@
     </main>
 
     <!-- Footer -->
-    <footer class="bg-gray-800/50 border-t border-gray-700/50 mt-20">
-        <div class="container mx-auto px-6 py-6 text-center text-gray-400">
-            <p>&copy; 2025 Adib Sakhawat. All Rights Reserved.</p>
-            <p>Part of the <a href="https://github.com/sakhadib/Bangladesh-Legal-Dataset" target="_blank" class="text-teal-400 hover:underline">Bangladesh Legal Dataset</a> Project.</p>
+    <footer class="bg-gray-900/70 backdrop-blur-lg border-t border-teal-500/20 mt-20 text-gray-300">
+        <div class="container mx-auto px-6 py-12">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- About Section -->
+                <div class="flex flex-col items-center md:items-start text-center md:text-left">
+                    <h3 class="text-2xl font-bold text-white mb-2">
+                        <i class="fas fa-balance-scale mr-2"></i>BLAD
+                    </h3>
+                    <p class="text-sm text-gray-400 max-w-xs">
+                        A meticulously curated collection of over 1,484 legal acts, providing a gateway to analyzing the evolution of Bangladeshi law.
+                    </p>
+                    <div class="mt-6">
+                        <p class="font-semibold text-white">Dataset compiled by:</p>
+                        <a href="https://portfolio.sakhawatadib.com" target="_blank" class="text-teal-400 hover:underline">Adib Sakhawat</a>
+                    </div>
+                </div>
+
+                <!-- Quick Links Section -->
+                <div class="flex flex-col items-center">
+                    <h4 class="text-lg font-semibold text-white mb-4">Quick Links</h4>
+                    <div class="flex flex-col space-y-2 text-center">
+                        <a href="#overview" class="hover:text-teal-400 transition-colors">Overview</a>
+                        <a href="#stats" class="hover:text-teal-400 transition-colors">Statistics</a>
+                        <a href="#download" class="hover:text-teal-400 transition-colors">Download</a>
+                        <a href="#govt-eras" class="hover:text-teal-400 transition-colors">History</a>
+                    </div>
+                </div>
+
+                <!-- Social & Legal Section -->
+                <div class="flex flex-col items-center md:items-end text-center md:text-right">
+                    <h4 class="text-lg font-semibold text-white mb-4">Follow the Project</h4>
+                    <div class="flex space-x-4 mb-6">
+                        <a href="https://github.com/sakhadib/Bangladesh-Legal-Acts-Dataset" target="_blank" class="text-gray-400 hover:text-teal-400 transition-colors text-2xl"><i class="fab fa-github"></i></a>
+                        <a href="https://www.kaggle.com/datasets/sakhadib/bangladesh-legal-acts-dataset" target="_blank" class="text-gray-400 hover:text-teal-400 transition-colors text-2xl"><i class="fab fa-kaggle"></i></a>
+                        <a href="https://zenodo.org/records/16176827" target="_blank" class="text-gray-400 hover:text-teal-400 transition-colors text-2xl"><i class="fas fa-database"></i></a>
+                    </div>
+                    <div class="text-sm text-gray-500">
+                        <p>Dataset released under <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" class="text-teal-500 hover:underline">CC BY 4.0</a>.</p>
+                        <p class="mt-2">Legislative data is the property of the Government of Bangladesh.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-12 border-t border-gray-800 pt-6 text-center text-sm text-gray-500">
+                <p>&copy; 2025 Adib Sakhawat. All Rights Reserved.</p>
+            </div>
         </div>
     </footer>
 
@@ -317,6 +516,7 @@
     </div>
 
     <script src="app.js"></script>
+    <script src="bangladesh_legal_acts_data.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const chartData = {
@@ -562,6 +762,46 @@
                         }
                     }
                 }
+            });
+        });
+
+        // Citation Tabs Logic
+        document.addEventListener('DOMContentLoaded', () => {
+            const tabs = document.querySelectorAll('.citation-tab');
+            const panels = document.querySelectorAll('.citation-panel');
+
+            tabs.forEach(tab => {
+                tab.addEventListener('click', () => {
+                    // Deactivate all tabs and panels
+                    tabs.forEach(t => t.classList.remove('active'));
+                    panels.forEach(p => p.classList.remove('active'));
+
+                    // Activate the clicked tab and corresponding panel
+                    tab.classList.add('active');
+                    const targetPanel = document.getElementById(tab.dataset.target);
+                    if (targetPanel) {
+                        targetPanel.classList.add('active');
+                    }
+                });
+            });
+
+            // Copy Citation Logic
+            const copyButtons = document.querySelectorAll('.copy-citation-btn');
+            copyButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const citationText = button.parentElement.querySelector('.citation-text').innerText;
+                    navigator.clipboard.writeText(citationText).then(() => {
+                        const buttonText = button.querySelector('span');
+                        buttonText.textContent = 'Copied!';
+                        button.classList.add('bg-teal-600');
+                        setTimeout(() => {
+                            buttonText.textContent = 'Copy';
+                            button.classList.remove('bg-teal-600');
+                        }, 2000);
+                    }).catch(err => {
+                        console.error('Failed to copy text: ', err);
+                    });
+                });
             });
         });
     </script>

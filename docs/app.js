@@ -8,6 +8,8 @@ document.addEventListener('DOMContentLoaded', function() {
     const jsonViewerTitle = document.getElementById('json-viewer-title');
     const jsonViewerContent = document.getElementById('json-viewer-content');
     const jsonViewerClose = document.getElementById('json-viewer-close');
+    const datasetLoader = document.getElementById('dataset-loader');
+    const tableContainer = document.getElementById('table-container');
 
     let allActs = [];
     let filteredActs = [];
@@ -25,7 +27,7 @@ document.addEventListener('DOMContentLoaded', function() {
         jsonViewerContent.textContent = 'Loading...';
         jsonViewerModal.classList.remove('hidden');
         
-        fetch(`../Data/acts/${file}`)
+        fetch(`https://huggingface.co/datasets/sakhadib/Bangladesh-Legal-Acts-Dataset/resolve/main/acts/${file}`)
             .then(response => {
                 if (!response.ok) {
                     throw new Error(`HTTP error! status: ${response.status}`);
@@ -60,20 +62,50 @@ document.addEventListener('DOMContentLoaded', function() {
     });
     // --- End of JSON Viewer Modal Logic ---
 
-    // Fetch and process data
-    async function loadData() {
+    // Load data from local JavaScript file (no fetch needed)
+    function loadData() {
         try {
-            const response = await fetch('../Data/Contextualized_Bangladesh_Legal_Acts.json');
-            if (!response.ok) {
-                throw new Error(`HTTP error! status: ${response.status}`);
+            // Check if the local data is available
+            if (typeof bangladeshLegalActs === 'undefined' || typeof getAllActs !== 'function') {
+                throw new Error('Local Bangladesh Legal Acts data not found. Please ensure bangladesh_legal_acts_data.js is loaded.');
             }
-            const data = await response.json();
-            allActs = data.acts.sort((a, b) => (b.act_year || 0) - (a.act_year || 0)); // Sort by year descending
-            filteredActs = allActs;
-            renderTable();
+            
+            // Show loader briefly for UX
+            datasetLoader.classList.remove('hidden');
+            tableContainer.classList.add('hidden');
+            searchInput.disabled = true;
+            
+            // Use setTimeout to show the loader briefly, then load local data
+            setTimeout(() => {
+                // Convert the bangladeshLegalActs object to array format
+                allActs = getAllActs().map(act => ({
+                    act_title: act.title,
+                    act_year: act.year,
+                    act_no: act.actNo,
+                    source_file: act.link.split('/').pop() // Extract filename from URL
+                })).sort((a, b) => (b.act_year || 0) - (a.act_year || 0)); // Sort by year descending
+                
+                filteredActs = allActs;
+                
+                // Hide loader and show table
+                datasetLoader.classList.add('hidden');
+                tableContainer.classList.remove('hidden');
+                searchInput.disabled = false;
+                
+                renderTable();
+                
+                console.log(`Loaded ${allActs.length} acts from local data`);
+            }, 800); // Brief delay to show the loader animation
+            
         } catch (error) {
             console.error("Failed to load dataset:", error);
-            actsTableBody.innerHTML = `<tr><td colspan="4" class="text-center p-4 text-red-400">Failed to load data. Please check the console.</td></tr>`;
+            
+            // Hide loader and show error
+            datasetLoader.classList.add('hidden');
+            tableContainer.classList.remove('hidden');
+            searchInput.disabled = false;
+            
+            actsTableBody.innerHTML = `<tr><td colspan="4" class="text-center p-4 text-red-400">Failed to load data. ${error.message}</td></tr>`;
         }
     }
 
@@ -99,7 +131,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     <button class="view-json-btn text-teal-400 hover:text-teal-300 mr-4" title="View JSON" data-file="${act.source_file}" data-title="${act.act_title || 'Act Details'}">
                         <i class="fas fa-eye"></i>
                     </button>
-                    <a href="../Data/acts/${act.source_file}" download class="text-teal-400 hover:text-teal-300" title="Download JSON">
+                    <a href="https://huggingface.co/datasets/sakhadib/Bangladesh-Legal-Acts-Dataset/resolve/main/acts/${act.source_file}" download class="text-teal-400 hover:text-teal-300" title="Download JSON">
                         <i class="fas fa-download"></i>
                     </a>
                 </td>
@@ -124,15 +156,26 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    // Search functionality
+    // Search functionality (enhanced with local data)
     searchInput.addEventListener('input', () => {
         const searchTerm = searchInput.value.toLowerCase();
-        filteredActs = allActs.filter(act => {
-            const title = (act.act_title || '').toLowerCase();
-            const year = (act.act_year || '').toString();
-            const actNo = (act.act_no || '').toLowerCase();
-            return title.includes(searchTerm) || year.includes(searchTerm) || actNo.includes(searchTerm);
-        });
+        
+        if (searchTerm.trim() === '') {
+            // If search is empty, show all acts
+            filteredActs = allActs;
+        } else {
+            // Use the utility function from bangladesh_legal_acts_data.js for title search
+            // and also search by year and act number
+            filteredActs = allActs.filter(act => {
+                const title = (act.act_title || '').toLowerCase();
+                const year = (act.act_year || '').toString();
+                const actNo = (act.act_no || '').toString().toLowerCase();
+                return title.includes(searchTerm) || 
+                       year.includes(searchTerm) || 
+                       actNo.includes(searchTerm);
+            });
+        }
+        
         actsToShow = actsPerLoad; // Reset display count
         renderTable();
     });
