@@ -1,0 +1,18 @@
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://sakhadib.github.io/Bangladesh-Legal-Acts-Dataset/sitemap.xml
+
+# Important pages for crawlers
+Allow: /index.html
+Allow: /*.json
+Allow: /*.js
+Allow: /*.css
+
+# Block crawling of temporary files
+Disallow: /tmp/
+Disallow: /*.tmp
+
+# Crawl delay (optional - be respectful to crawlers)
+Crawl-delay: 1

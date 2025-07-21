@@ -3,7 +3,116 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bangladesh Legal Acts Dataset</title>
+    <title>Bangladesh Legal Acts Dataset - 1,484+ Legislative Acts from 1799-2025 | BLAD</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Download the comprehensive Bangladesh Legal Acts Dataset (BLAD) containing 1,484+ meticulously curated legislative acts from 1799-2025. Explore Bangladeshi legal history, government periods, and constitutional evolution.">
+    <meta name="keywords" content="Bangladesh legal acts, legal dataset, legislative history, Bangladesh laws, legal research, constitutional law, government legislation, legal database, open data, research dataset">
+    <meta name="author" content="Adib Sakhawat">
+    <meta name="robots" content="index, follow">
+    <meta name="language" content="English">
+    <meta name="revisit-after" content="30 days">
+    
+    <!-- Open Graph Meta Tags for Social Media -->
+    <meta property="og:title" content="Bangladesh Legal Acts Dataset - 1,484+ Legislative Acts | BLAD">
+    <meta property="og:description" content="A meticulously curated collection of over 1,484 Bangladesh legal acts from 1799-2025. Perfect for legal research, data science, and historical analysis.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://sakhadib.github.io/Bangladesh-Legal-Acts-Dataset/">
+    <meta property="og:image" content="https://avatars.githubusercontent.com/u/111243915?v=4">
+    <meta property="og:site_name" content="Bangladesh Legal Acts Dataset">
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Bangladesh Legal Acts Dataset - 1,484+ Legislative Acts">
+    <meta name="twitter:description" content="Comprehensive dataset of Bangladesh legal acts from 1799-2025. Open source legal research data.">
+    <meta name="twitter:image" content="https://avatars.githubusercontent.com/u/111243915?v=4">
+    <meta name="twitter:creator" content="@sakhadib">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://sakhadib.github.io/Bangladesh-Legal-Acts-Dataset/">
+    
+    <!-- Favicon and Icons -->
+    <link rel="icon" type="image/x-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚖️</text></svg>">
+    <link rel="apple-touch-icon" href="https://avatars.githubusercontent.com/u/111243915?v=4">
+    
+    <!-- Additional SEO Meta Tags -->
+    <meta name="geo.region" content="BD">
+    <meta name="geo.country" content="Bangladesh">
+    <meta name="ICBM" content="23.6850, 90.3563">
+    <meta name="geo.position" content="23.6850;90.3563">
+    <meta name="theme-color" content="#14b8a6">
+    <meta name="msapplication-TileColor" content="#14b8a6">
+    
+    <!-- Preconnect for Performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://cdn.tailwindcss.com">
+    <link rel="preconnect" href="https://cdn.jsdelivr.net">
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    
+    <!-- DNS Prefetch for External Resources -->
+    <link rel="dns-prefetch" href="//github.com">
+    <link rel="dns-prefetch" href="//zenodo.org">
+    <link rel="dns-prefetch" href="//kaggle.com">
+    <link rel="dns-prefetch" href="//huggingface.co">
+    
+    <!-- Alternative Language/Format Links -->
+    <link rel="alternate" type="application/json" href="https://huggingface.co/datasets/sakhadib/Bangladesh-Legal-Acts-Dataset/resolve/main/Contextualized_Bangladesh_Legal_Acts.json" title="Dataset in JSON format">
+    
+    <!-- Sitemap Reference -->
+    <link rel="sitemap" type="application/xml" href="./sitemap.xml">
+    
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="./manifest.json">
+    
+    <!-- Schema.org Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Dataset",
+      "name": "Bangladesh Legal Acts Dataset",
+      "description": "A meticulously curated collection of over 1,484 legal acts from Bangladesh, spanning from 1799 to 2025, enriched with historical government and legal system context.",
+      "url": "https://sakhadib.github.io/Bangladesh-Legal-Acts-Dataset/",
+      "identifier": "https://doi.org/10.5281/zenodo.16176827",
+      "keywords": ["Bangladesh", "legal acts", "legislation", "legal research", "constitutional law", "government data"],
+      "creator": {
+        "@type": "Person",
+        "name": "Adib Sakhawat",
+        "url": "https://portfolio.sakhawatadib.com",
+        "affiliation": {
+          "@type": "Organization",
+          "name": "Islamic University of Technology"
+        }
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Zenodo",
+        "url": "https://zenodo.org/"
+      },
+      "datePublished": "2025",
+      "dateModified": "2025-07-22",
+      "license": "https://creativecommons.org/licenses/by/4.0/",
+      "distribution": [
+        {
+          "@type": "DataDownload",
+          "encodingFormat": "application/json",
+          "contentUrl": "https://huggingface.co/datasets/sakhadib/Bangladesh-Legal-Acts-Dataset/resolve/main/Contextualized_Bangladesh_Legal_Acts.json"
+        }
+      ],
+      "spatialCoverage": {
+        "@type": "Place",
+        "name": "Bangladesh"
+      },
+      "temporalCoverage": "1799/2025",
+      "variableMeasured": [
+        "Legal Act Title",
+        "Year of Enactment",
+        "Act Number",
+        "Government Period",
+        "Head of State",
+        "Legal System Context"
+      ]
+    }
+    </script>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
@@ -92,47 +201,47 @@
 <body class="bg-gray-900 text-gray-200">
 
     <!-- Header -->
-    <header class="bg-gray-800/50 backdrop-blur-lg sticky top-0 z-50">
-        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
-            <a href="#" class="text-2xl font-bold text-white">
-                <i class="fas fa-balance-scale mr-2"></i>
+    <header class="bg-gray-800/50 backdrop-blur-lg sticky top-0 z-50" role="banner">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center" role="navigation" aria-label="Main navigation">
+            <a href="#" class="text-2xl font-bold text-white" aria-label="Bangladesh Legal Acts Dataset - Home">
+                <i class="fas fa-balance-scale mr-2" aria-hidden="true"></i>
                 BLAD
             </a>
             <div class="hidden md:flex items-center space-x-6">
-                <a href="#overview" class="hover:text-teal-400 transition-colors">Overview</a>
-                <a href="#stats" class="hover:text-teal-400 transition-colors">Statistics</a>
-                <a href="#download" class="hover:text-teal-400 transition-colors">Download</a>
-                <a href="https://github.com/sakhadib/Bangladesh-Legal-Acts-Dataset" target="_blank" class="bg-teal-500 hover:bg-teal-600 text-white font-bold py-2 px-4 rounded-full transition-transform transform hover:scale-105">
-                    <i class="fab fa-github mr-2"></i>
+                <a href="#overview" class="hover:text-teal-400 transition-colors" aria-label="Go to Overview section">Overview</a>
+                <a href="#stats" class="hover:text-teal-400 transition-colors" aria-label="Go to Statistics section">Statistics</a>
+                <a href="#download" class="hover:text-teal-400 transition-colors" aria-label="Go to Download section">Download</a>
+                <a href="https://github.com/sakhadib/Bangladesh-Legal-Acts-Dataset" target="_blank" rel="noopener noreferrer" class="bg-teal-500 hover:bg-teal-600 text-white font-bold py-2 px-4 rounded-full transition-transform transform hover:scale-105" aria-label="View project on GitHub (opens in new tab)">
+                    <i class="fab fa-github mr-2" aria-hidden="true"></i>
                     GitHub
                 </a>
-                <a href="https://zenodo.org/records/16176827" target="_blank" class="hover:text-teal-400 transition-colors flex items-center">
-                    <i class="fas fa-database mr-2"></i>
+                <a href="https://zenodo.org/records/16176827" target="_blank" rel="noopener noreferrer" class="hover:text-teal-400 transition-colors flex items-center" aria-label="View dataset on Zenodo (opens in new tab)">
+                    <i class="fas fa-database mr-2" aria-hidden="true"></i>
                     Zenodo
                 </a>
-                <a href="https://www.kaggle.com/datasets/sakhadib/bangladesh-legal-acts-dataset" target="_blank" class="hover:text-teal-400 transition-colors flex items-center">
-                    <i class="fab fa-kaggle mr-2"></i>
+                <a href="https://www.kaggle.com/datasets/sakhadib/bangladesh-legal-acts-dataset" target="_blank" rel="noopener noreferrer" class="hover:text-teal-400 transition-colors flex items-center" aria-label="View dataset on Kaggle (opens in new tab)">
+                    <i class="fab fa-kaggle mr-2" aria-hidden="true"></i>
                     Kaggle
                 </a>
             </div>
-            <button id="mobile-menu-button" class="md:hidden text-white focus:outline-none">
-                <i class="fas fa-bars text-2xl"></i>
+            <button id="mobile-menu-button" class="md:hidden text-white focus:outline-none" aria-label="Toggle mobile menu" aria-expanded="false">
+                <i class="fas fa-bars text-2xl" aria-hidden="true"></i>
             </button>
         </nav>
         <!-- Mobile Menu -->
-        <div id="mobile-menu" class="hidden md:hidden px-6 pb-4">
-            <a href="#overview" class="block py-2 hover:text-teal-400">Overview</a>
-            <a href="#stats" class="block py-2 hover:text-teal-400">Statistics</a>
-            <a href="#download" class="block py-2 hover:text-teal-400">Download</a>
-            <a href="https://github.com/sakhadib/Bangladesh-Legal-Dataset" target="_blank" class="block mt-2 bg-teal-500 hover:bg-teal-600 text-white font-bold py-2 px-4 rounded-full text-center">
-                <i class="fab fa-github mr-2"></i>
+        <div id="mobile-menu" class="hidden md:hidden px-6 pb-4" role="menu">
+            <a href="#overview" class="block py-2 hover:text-teal-400" role="menuitem">Overview</a>
+            <a href="#stats" class="block py-2 hover:text-teal-400" role="menuitem">Statistics</a>
+            <a href="#download" class="block py-2 hover:text-teal-400" role="menuitem">Download</a>
+            <a href="https://github.com/sakhadib/Bangladesh-Legal-Dataset" target="_blank" rel="noopener noreferrer" class="block mt-2 bg-teal-500 hover:bg-teal-600 text-white font-bold py-2 px-4 rounded-full text-center" role="menuitem" aria-label="View project on GitHub (opens in new tab)">
+                <i class="fab fa-github mr-2" aria-hidden="true"></i>
                 GitHub
             </a>
         </div>
     </header>
 
     <!-- Main Content -->
-    <main class="container mx-auto px-6 py-12">
+    <main class="container mx-auto px-6 py-12" role="main">
 
         <!-- Overview Section -->
         <section id="overview" class="text-center mb-20">
@@ -140,22 +249,25 @@
             <h1 class="text-4xl md:text-6xl font-extrabold text-white mb-6 leading-tight">
                 <span class="text-teal-400">Bangladesh</span> Legal Acts Dataset
             </h1>
-            <p class="text-lg md:text-xl text-gray-400 max-w-4xl mx-auto mb-12 leading-relaxed">
+            <h2 class="text-lg md:text-xl text-gray-400 max-w-4xl mx-auto mb-12 leading-relaxed">
                 A meticulously curated collection of over 1,484 legal acts, enriched with historical government 
-                and legal system context. Your gateway to analyzing the evolution of Bangladeshi law.
-            </p>
+                and legal system context. Your gateway to analyzing the evolution of Bangladeshi law from 1799 to 2025.
+            </h2>
             
             <!-- Author Attribution -->
             <div class="inline-block bg-gray-800/30 backdrop-blur-sm border border-gray-700/50 rounded-lg p-4">
                 <div class="flex items-center space-x-4 ml-8 mr-8">
                     <img src="https://avatars.githubusercontent.com/u/111243915?v=4" 
-                         alt="Adib Sakhawat" 
-                         class="w-12 h-12 rounded-full border-2 border-teal-400/50">
+                         alt="Adib Sakhawat - Dataset Compiler" 
+                         class="w-12 h-12 rounded-full border-2 border-teal-400/50"
+                         loading="lazy">
                     <div class="text-left">
                         <p class="text-sm text-gray-400">Dataset compiled by</p>
                         <a href="https://portfolio.sakhawatadib.com" 
                            target="_blank" 
-                           class="text-lg font-semibold text-white hover:text-teal-400 transition-colors">
+                           rel="noopener noreferrer"
+                           class="text-lg font-semibold text-white hover:text-teal-400 transition-colors"
+                           aria-label="Visit Adib Sakhawat's portfolio (opens in new tab)">
                             Adib Sakhawat
                         </a>
                         <p class="text-xs text-gray-500 mt-1">Software engineering student, <br>Islamic University of Technology</p>
@@ -167,6 +279,10 @@
         <!-- Statistics Section -->
         <section id="stats" class="mb-20">
             <h2 class="text-3xl font-bold text-center mb-10 text-white">Dataset at a Glance</h2>
+            <p class="text-center text-gray-400 mb-10 max-w-3xl mx-auto">
+                Comprehensive legal dataset covering over two centuries of Bangladesh's legislative history, 
+                from British colonial rule to modern parliamentary democracy.
+            </p>
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
                 <div class="glass-effect p-6 rounded-xl hover:bg-gray-700/50 transition-all transform hover:-translate-y-1">
                     <div class="flex items-center">
@@ -220,6 +336,10 @@
         <!-- Government Eras Section -->
         <section id="govt-eras" class="mb-20">
             <h2 class="text-3xl font-bold text-center mb-16 text-white">A Journey Through Legal History</h2>
+            <p class="text-center text-gray-400 mb-12 max-w-4xl mx-auto">
+                Explore how Bangladesh's legal framework evolved through different political eras, 
+                from East India Company rule to modern democratic governance.
+            </p>
             <div class="relative container mx-auto px-6 flex flex-col space-y-8">
                 <div class="absolute w-1 bg-teal-500/30 h-full left-4 md:left-1/2 transform md:-translate-x-1/2"></div>
 
@@ -282,6 +402,10 @@
         <!-- Number of Acts vs Era -->
         <section id="acts-vs-era" class="mb-20">
             <h2 class="text-3xl font-bold text-center mb-10 text-white">Legislative Activity Over Decades</h2>
+            <p class="text-center text-gray-400 mb-6 max-w-3xl mx-auto">
+                Track the evolution of legislative activity from the 1790s to the 2020s, 
+                showing periods of increased legal reform and constitutional development.
+            </p>
             <div class="glass-effect rounded-xl p-6" style="height: 500px;">
                 <canvas id="actsVsEraChart"></canvas>
             </div>
@@ -292,6 +416,10 @@
         <!-- Period and Govt System wise Act No -->
         <section id="period-govt-system" class="mb-20">
             <h2 class="text-3xl font-bold text-center mb-10 text-white">Acts by Period and Government System</h2>
+            <p class="text-center text-gray-400 mb-8 max-w-4xl mx-auto">
+                Analyze how different political systems and historical periods influenced legislative output. 
+                Compare colonial rule, military governments, and democratic periods.
+            </p>
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
                 <div class="glass-effect rounded-xl p-6">
                     <h3 class="text-xl font-bold text-center mb-4 text-white">Distribution by Period</h3>
@@ -312,6 +440,10 @@
         <!-- Acts by Heads of the state -->
         <section id="acts-by-heads-of-state" class="mb-20">
             <h2 class="text-3xl font-bold text-center mb-10 text-white">Legislative Impact of Heads of State</h2>
+            <p class="text-center text-gray-400 mb-6 max-w-4xl mx-auto">
+                Compare the legislative productivity of different heads of state and analyze 
+                the relationship between acts passed and acts later repealed.
+            </p>
             <div class="glass-effect rounded-xl p-6">
                 <p class="text-center text-gray-400 mb-6">Comparing total acts passed vs. acts later repealed for the top 10 most active legislators.</p>
                 <div style="height: 500px;">
@@ -323,11 +455,19 @@
         <hr id="download">
 
         <!-- Download Section -->
-        <section  class="mb-20">
+        <section id="download" class="mb-20">
             <h2 class="text-6xl font-bold text-center mb-10 mt-10 text-white">Download the Data</h2>
+            <p class="text-center text-gray-400 mb-8 max-w-4xl mx-auto">
+                Access the complete Bangladesh Legal Acts Dataset in JSON format. 
+                Perfect for researchers, data scientists, legal scholars, and policy analysts.
+            </p>
             <div class="flex flex-col md:flex-row justify-center items-center gap-6 mb-12">
-                <a href="https://huggingface.co/datasets/sakhadib/Bangladesh-Legal-Acts-Dataset/resolve/main/Contextualized_Bangladesh_Legal_Acts.json?download=true" download class="w-full md:w-auto bg-gradient-to-r from-teal-500 to-cyan-500 hover:from-teal-600 hover:to-cyan-600 text-white font-bold py-4 px-8 rounded-full text-lg transition-transform transform hover:scale-105 flex items-center justify-center">
-                    <i class="fas fa-download mr-3"></i>
+                <a href="https://huggingface.co/datasets/sakhadib/Bangladesh-Legal-Acts-Dataset/resolve/main/Contextualized_Bangladesh_Legal_Acts.json?download=true" 
+                   download="bangladesh_legal_acts_dataset.json"
+                   rel="noopener noreferrer"
+                   class="w-full md:w-auto bg-gradient-to-r from-teal-500 to-cyan-500 hover:from-teal-600 hover:to-cyan-600 text-white font-bold py-4 px-8 rounded-full text-lg transition-transform transform hover:scale-105 flex items-center justify-center"
+                   aria-label="Download complete Bangladesh Legal Acts Dataset in JSON format">
+                    <i class="fas fa-download mr-3" aria-hidden="true"></i>
                     Download Full Dataset (JSON)
                 </a>
                 
@@ -336,6 +476,10 @@
             <!-- Citation Section -->
             <section id="citation" class="mb-20">
                 <h2 class="text-3xl font-bold text-center mb-10 text-white">How to Cite This Dataset</h2>
+                <p class="text-center text-gray-400 mb-8 max-w-3xl mx-auto">
+                    If you use this dataset in your research, please cite it using one of the formats below. 
+                    Proper citation helps support open research and data sharing.
+                </p>
                 <div class="glass-effect rounded-xl p-6 max-w-4xl mx-auto">
                     <div class="border-b border-gray-700 mb-4">
                         <nav id="citation-tabs" class="flex -mb-px" aria-label="Tabs">
@@ -385,6 +529,10 @@
             <!-- Individual Acts Table -->
             <div class="glass-effect rounded-xl p-6">
                 <h3 class="text-2xl font-bold mb-6 text-white">Browse Individual Acts</h3>
+                <p class="text-gray-400 mb-4">
+                    Search and explore individual legal acts from the dataset. 
+                    Use the search function to find specific acts by title, year, or act number.
+                </p>
                 <div class="mb-4">
                     <input type="text" id="searchInput" class="w-full bg-gray-800 border border-gray-700 rounded-lg px-4 py-2 text-white focus:outline-none focus:ring-2 focus:ring-teal-500" placeholder="Search by title, year, or act number..." disabled>
                 </div>
@@ -451,44 +599,46 @@
     </main>
 
     <!-- Footer -->
-    <footer class="bg-gray-900/70 backdrop-blur-lg border-t border-teal-500/20 mt-20 text-gray-300">
+    <footer class="bg-gray-900/70 backdrop-blur-lg border-t border-teal-500/20 mt-20 text-gray-300" role="contentinfo">
         <div class="container mx-auto px-6 py-12">
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <!-- About Section -->
                 <div class="flex flex-col items-center md:items-start text-center md:text-left">
                     <h3 class="text-2xl font-bold text-white mb-2">
-                        <i class="fas fa-balance-scale mr-2"></i>BLAD
+                        <i class="fas fa-balance-scale mr-2" aria-hidden="true"></i>BLAD
                     </h3>
                     <p class="text-sm text-gray-400 max-w-xs">
                         A meticulously curated collection of over 1,484 legal acts, providing a gateway to analyzing the evolution of Bangladeshi law.
                     </p>
                     <div class="mt-6">
                         <p class="font-semibold text-white">Dataset compiled by:</p>
-                        <a href="https://portfolio.sakhawatadib.com" target="_blank" class="text-teal-400 hover:underline">Adib Sakhawat</a>
+                        <a href="https://portfolio.sakhawatadib.com" target="_blank" rel="noopener noreferrer" class="text-teal-400 hover:underline" aria-label="Visit Adib Sakhawat's portfolio">Adib Sakhawat</a>
                     </div>
                 </div>
 
                 <!-- Quick Links Section -->
                 <div class="flex flex-col items-center">
                     <h4 class="text-lg font-semibold text-white mb-4">Quick Links</h4>
-                    <div class="flex flex-col space-y-2 text-center">
-                        <a href="#overview" class="hover:text-teal-400 transition-colors">Overview</a>
-                        <a href="#stats" class="hover:text-teal-400 transition-colors">Statistics</a>
-                        <a href="#download" class="hover:text-teal-400 transition-colors">Download</a>
-                        <a href="#govt-eras" class="hover:text-teal-400 transition-colors">History</a>
-                    </div>
+                    <nav aria-label="Footer navigation">
+                        <div class="flex flex-col space-y-2 text-center">
+                            <a href="#overview" class="hover:text-teal-400 transition-colors">Overview</a>
+                            <a href="#stats" class="hover:text-teal-400 transition-colors">Statistics</a>
+                            <a href="#download" class="hover:text-teal-400 transition-colors">Download</a>
+                            <a href="#govt-eras" class="hover:text-teal-400 transition-colors">History</a>
+                        </div>
+                    </nav>
                 </div>
 
                 <!-- Social & Legal Section -->
                 <div class="flex flex-col items-center md:items-end text-center md:text-right">
                     <h4 class="text-lg font-semibold text-white mb-4">Follow the Project</h4>
-                    <div class="flex space-x-4 mb-6">
-                        <a href="https://github.com/sakhadib/Bangladesh-Legal-Acts-Dataset" target="_blank" class="text-gray-400 hover:text-teal-400 transition-colors text-2xl"><i class="fab fa-github"></i></a>
-                        <a href="https://www.kaggle.com/datasets/sakhadib/bangladesh-legal-acts-dataset" target="_blank" class="text-gray-400 hover:text-teal-400 transition-colors text-2xl"><i class="fab fa-kaggle"></i></a>
-                        <a href="https://zenodo.org/records/16176827" target="_blank" class="text-gray-400 hover:text-teal-400 transition-colors text-2xl"><i class="fas fa-database"></i></a>
+                    <div class="flex space-x-4 mb-6" role="list" aria-label="Social media and platform links">
+                        <a href="https://github.com/sakhadib/Bangladesh-Legal-Acts-Dataset" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-teal-400 transition-colors text-2xl" aria-label="View project on GitHub"><i class="fab fa-github" aria-hidden="true"></i></a>
+                        <a href="https://www.kaggle.com/datasets/sakhadib/bangladesh-legal-acts-dataset" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-teal-400 transition-colors text-2xl" aria-label="View dataset on Kaggle"><i class="fab fa-kaggle" aria-hidden="true"></i></a>
+                        <a href="https://zenodo.org/records/16176827" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-teal-400 transition-colors text-2xl" aria-label="View dataset on Zenodo"><i class="fas fa-database" aria-hidden="true"></i></a>
                     </div>
                     <div class="text-sm text-gray-500">
-                        <p>Dataset released under <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" class="text-teal-500 hover:underline">CC BY 4.0</a>.</p>
+                        <p>Dataset released under <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener noreferrer" class="text-teal-500 hover:underline">CC BY 4.0</a>.</p>
                         <p class="mt-2">Legislative data is the property of the Government of Bangladesh.</p>
                     </div>
                 </div>
