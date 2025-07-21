@@ -262,6 +262,66 @@
             #citation-tabs::-webkit-scrollbar {
                 display: none;
             }
+            
+            /* Mobile responsive action buttons */
+            .action-buttons {
+                flex-direction: column !important;
+                gap: 0.25rem !important;
+            }
+            
+            .action-buttons .hidden.sm\\:inline {
+                display: none !important;
+            }
+        }
+        
+        /* Modern action button animations */
+        .action-btn {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .action-btn::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: width 0.3s, height 0.3s;
+        }
+        
+        .action-btn:hover::before {
+            width: 120%;
+            height: 120%;
+        }
+        
+        /* Dropdown animation */
+        .group\/dropdown .absolute {
+            transform: translateY(-10px);
+            transition: all 0.2s ease-out;
+        }
+        
+        .group\/dropdown:hover .absolute {
+            transform: translateY(0);
+        }
+        
+        /* Table row hover effects */
+        .group:hover {
+            background: rgba(55, 65, 81, 0.5) !important;
+        }
+        
+        /* Button glow effects */
+        .hover\\:shadow-blue-500\/25:hover {
+            box-shadow: 0 10px 25px rgba(59, 130, 246, 0.25);
+        }
+        
+        /* Toast notification styling */
+        .toast {
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
     </style>
 </head>
@@ -603,7 +663,9 @@
                 <p class="text-gray-400 mb-8">
                     Search and explore individual legal acts from the dataset. <br> 
                     Use the search function to find specific acts by title, year, or act number.
-                    Click on the <i class="fas fa-file-alt text-blue-400 mx-1"></i> icon to view detailed information about any act.
+                    Click <span class="inline-flex items-center gap-1 px-2 py-1 bg-blue-600 text-white text-xs rounded font-medium">
+                        <i class="fas fa-external-link-alt"></i> View
+                    </span> to see detailed information, or use the dropdown menu for more options.
                 </p>
                 <div class="mb-4">
                     <input type="text" id="searchInput" class="w-full bg-gray-800 border border-gray-700 rounded-lg px-4 py-2 text-white focus:outline-none focus:ring-2 focus:ring-teal-500" placeholder="Search by title, year, or act number..." disabled>
@@ -1028,6 +1090,64 @@
                 });
             });
         });
+
+        // Global functions for modern action buttons
+        function copyActLink(filename, title) {
+            const detailsUrl = `${window.location.origin}${window.location.pathname}details/?act=${encodeURIComponent(filename)}`;
+            navigator.clipboard.writeText(detailsUrl).then(() => {
+                showToast(`Link copied for "${title}"`, 'success');
+            }).catch(() => {
+                showToast('Failed to copy link', 'error');
+            });
+        }
+
+        function shareAct(filename, title) {
+            const detailsUrl = `${window.location.origin}${window.location.pathname}details/?act=${encodeURIComponent(filename)}`;
+            
+            if (navigator.share) {
+                navigator.share({
+                    title: `${title} - Bangladesh Legal Acts Dataset`,
+                    text: `Check out this legal act from the Bangladesh Legal Acts Dataset: ${title}`,
+                    url: detailsUrl
+                }).catch(err => console.log('Error sharing:', err));
+            } else {
+                // Fallback to copying link
+                copyActLink(filename, title);
+            }
+        }
+
+        function showToast(message, type = 'info') {
+            const toast = document.createElement('div');
+            toast.className = `fixed top-4 right-4 z-50 px-6 py-3 rounded-lg text-white font-medium transition-all duration-300 transform translate-x-full max-w-sm toast`;
+            
+            if (type === 'success') {
+                toast.classList.add('bg-green-600');
+                toast.innerHTML = `<i class="fas fa-check mr-2"></i>${message}`;
+            } else if (type === 'error') {
+                toast.classList.add('bg-red-600');
+                toast.innerHTML = `<i class="fas fa-times mr-2"></i>${message}`;
+            } else {
+                toast.classList.add('bg-blue-600');
+                toast.innerHTML = `<i class="fas fa-info mr-2"></i>${message}`;
+            }
+            
+            document.body.appendChild(toast);
+            
+            // Animate in
+            setTimeout(() => {
+                toast.classList.remove('translate-x-full');
+            }, 100);
+            
+            // Animate out and remove
+            setTimeout(() => {
+                toast.classList.add('translate-x-full');
+                setTimeout(() => {
+                    if (document.body.contains(toast)) {
+                        document.body.removeChild(toast);
+                    }
+                }, 300);
+            }, 3000);
+        }
     </script>
 </body>
 </html>

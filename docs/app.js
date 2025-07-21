@@ -49,6 +49,62 @@ document.addEventListener('DOMContentLoaded', function() {
         jsonViewerModal.classList.add('hidden');
     }
 
+    // Modern action functions
+    function copyActLink(filename, title) {
+        const detailsUrl = `${window.location.origin}${window.location.pathname}details/?act=${encodeURIComponent(filename)}`;
+        navigator.clipboard.writeText(detailsUrl).then(() => {
+            showToast(`Link copied for "${title}"`, 'success');
+        }).catch(() => {
+            showToast('Failed to copy link', 'error');
+        });
+    }
+
+    function shareAct(filename, title) {
+        const detailsUrl = `${window.location.origin}${window.location.pathname}details/?act=${encodeURIComponent(filename)}`;
+        
+        if (navigator.share) {
+            navigator.share({
+                title: `${title} - Bangladesh Legal Acts Dataset`,
+                text: `Check out this legal act from the Bangladesh Legal Acts Dataset: ${title}`,
+                url: detailsUrl
+            }).catch(err => console.log('Error sharing:', err));
+        } else {
+            // Fallback to copying link
+            copyActLink(filename, title);
+        }
+    }
+
+    function showToast(message, type = 'info') {
+        const toast = document.createElement('div');
+        toast.className = `fixed top-4 right-4 z-50 px-6 py-3 rounded-lg text-white font-medium transition-all duration-300 transform translate-x-full max-w-sm`;
+        
+        if (type === 'success') {
+            toast.classList.add('bg-green-600');
+            toast.innerHTML = `<i class="fas fa-check mr-2"></i>${message}`;
+        } else if (type === 'error') {
+            toast.classList.add('bg-red-600');
+            toast.innerHTML = `<i class="fas fa-times mr-2"></i>${message}`;
+        } else {
+            toast.classList.add('bg-blue-600');
+            toast.innerHTML = `<i class="fas fa-info mr-2"></i>${message}`;
+        }
+        
+        document.body.appendChild(toast);
+        
+        // Animate in
+        setTimeout(() => {
+            toast.classList.remove('translate-x-full');
+        }, 100);
+        
+        // Animate out and remove
+        setTimeout(() => {
+            toast.classList.add('translate-x-full');
+            setTimeout(() => {
+                document.body.removeChild(toast);
+            }, 300);
+        }, 3000);
+    }
+
     jsonViewerClose.addEventListener('click', closeJsonViewer);
     jsonViewerModal.addEventListener('click', (e) => {
         if (e.target === jsonViewerModal) {
@@ -122,21 +178,53 @@ document.addEventListener('DOMContentLoaded', function() {
 
         actsToRender.forEach(act => {
             const row = document.createElement('tr');
-            row.className = 'border-b border-gray-800 hover:bg-gray-800/50';
+            row.className = 'border-b border-gray-800 hover:bg-gray-800/30 transition-colors group';
             row.innerHTML = `
                 <td class="p-4 font-medium">${act.act_title || 'N/A'}</td>
                 <td class="p-4">${act.act_year || 'N/A'}</td>
                 <td class="p-4">${act.act_no || 'N/A'}</td>
-                <td class="p-4 text-right">
-                    <a href="./details/?act=${encodeURIComponent(act.source_file)}" class="text-blue-400 hover:text-blue-300 mr-3" title="View Details" aria-label="View details for ${act.act_title}">
-                        <i class="fas fa-file-alt"></i>
-                    </a>
-                    <button class="view-json-btn text-teal-400 hover:text-teal-300 mr-3" title="View JSON" data-file="${act.source_file}" data-title="${act.act_title || 'Act Details'}">
-                        <i class="fas fa-eye"></i>
-                    </button>
-                    <a href="https://huggingface.co/datasets/sakhadib/Bangladesh-Legal-Acts-Dataset/resolve/main/acts/${act.source_file}" download class="text-teal-400 hover:text-teal-300" title="Download JSON">
-                        <i class="fas fa-download"></i>
-                    </a>
+                <td class="p-4">
+                    <div class="flex items-center justify-end gap-2">
+                        <a href="./details/?act=${encodeURIComponent(act.source_file)}" 
+                           class="inline-flex items-center gap-2 px-3 py-1.5 text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 rounded-lg transition-all duration-200 hover:scale-105 hover:shadow-lg hover:shadow-blue-500/25" 
+                           title="View full details" 
+                           aria-label="View details for ${act.act_title}">
+                            <i class="fas fa-external-link-alt text-xs"></i>
+                            <span class="hidden sm:inline">View</span>
+                        </a>
+                        <button class="view-json-btn inline-flex items-center gap-2 px-3 py-1.5 text-sm font-medium text-gray-300 bg-gray-700 hover:bg-gray-600 rounded-lg transition-all duration-200 hover:scale-105 hover:shadow-lg" 
+                                title="Preview JSON data" 
+                                data-file="${act.source_file}" 
+                                data-title="${act.act_title || 'Act Details'}">
+                            <i class="fas fa-code text-xs"></i>
+                            <span class="hidden sm:inline">JSON</span>
+                        </button>
+                        <div class="relative group/dropdown">
+                            <button class="inline-flex items-center gap-2 px-3 py-1.5 text-sm font-medium text-gray-300 bg-gray-700 hover:bg-gray-600 rounded-lg transition-all duration-200 hover:scale-105 hover:shadow-lg" 
+                                    title="More options">
+                                <i class="fas fa-ellipsis-v text-xs"></i>
+                                <span class="hidden sm:inline">More</span>
+                            </button>
+                            <div class="absolute right-0 top-full mt-1 w-40 bg-gray-800 border border-gray-700 rounded-lg shadow-xl opacity-0 invisible group-hover/dropdown:opacity-100 group-hover/dropdown:visible transition-all duration-200 z-10">
+                                <a href="https://huggingface.co/datasets/sakhadib/Bangladesh-Legal-Acts-Dataset/resolve/main/acts/${act.source_file}" 
+                                   download 
+                                   class="flex items-center gap-3 px-3 py-2 text-sm text-gray-300 hover:bg-gray-700 hover:text-white transition-colors first:rounded-t-lg">
+                                    <i class="fas fa-download text-xs text-teal-400"></i>
+                                    Download JSON
+                                </a>
+                                <button onclick="copyActLink('${act.source_file}', '${act.act_title?.replace(/'/g, "\\'")}'); event.stopPropagation();" 
+                                        class="flex items-center gap-3 px-3 py-2 text-sm text-gray-300 hover:bg-gray-700 hover:text-white transition-colors w-full text-left">
+                                    <i class="fas fa-link text-xs text-blue-400"></i>
+                                    Copy Link
+                                </button>
+                                <button onclick="shareAct('${act.source_file}', '${act.act_title?.replace(/'/g, "\\'")}'); event.stopPropagation();" 
+                                        class="flex items-center gap-3 px-3 py-2 text-sm text-gray-300 hover:bg-gray-700 hover:text-white transition-colors last:rounded-b-lg w-full text-left">
+                                    <i class="fas fa-share text-xs text-green-400"></i>
+                                    Share Act
+                                </button>
+                            </div>
+                        </div>
+                    </div>
                 </td>
             `;
             actsTableBody.appendChild(row);
